@@ -1,0 +1,1341 @@
+{
+ "writer": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+ "auditor": "nvidia/nemotron-3-super-120b-a12b",
+ "base": "https://api.tokenfactory.nebius.com/v1",
+ "A": [
+  {
+   "claim": "claim_dental_not_covered.json",
+   "total": 175.0,
+   "explanation": "Your office visit was billed $200.00, the plan allowed $95.00, so you owe $35.00. The dental cleaning is not covered, billed $140.00 and allowed $140.00, so you owe $140.00. Adding those amounts gives a total patient responsibility of $175.00. Payment plans are available.",
+   "source": "nemotron",
+   "auditor": {
+    "ok": true,
+    "problems": []
+   },
+   "guardrail_violations": [],
+   "latency_s": 11.266,
+   "calls": [
+    {
+     "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+     "latency_s": 9.604,
+     "prompt_tokens": 156,
+     "completion_tokens": 949,
+     "cost_usd": 0.00023712,
+     "finish_reason": "stop"
+    },
+    {
+     "model": "nvidia/nemotron-3-super-120b-a12b",
+     "latency_s": 1.661,
+     "prompt_tokens": 254,
+     "completion_tokens": 142,
+     "cost_usd": 0.000204,
+     "finish_reason": "stop"
+    }
+   ]
+  },
+  {
+   "claim": "claim_er_visit.json",
+   "total": 551.0,
+   "explanation": "You were billed $1,450.00 for the ER visit, but the allowed amount is $620.00, so you owe $524.00.  \nThe chest X\u2011ray was billed $380.00, allowed $95.00, so you owe $19.00.  \nThe ECG was billed $210.00, allowed $40.00, so you owe $8.00.  \nAdding those patient\u2011owed amounts gives $551.00.  \nPayment plans exist.",
+   "source": "nemotron",
+   "auditor": {
+    "ok": true,
+    "problems": []
+   },
+   "guardrail_violations": [],
+   "latency_s": 8.775,
+   "calls": [
+    {
+     "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+     "latency_s": 6.55,
+     "prompt_tokens": 190,
+     "completion_tokens": 626,
+     "cost_usd": 0.00016163999999999998,
+     "finish_reason": "stop"
+    },
+    {
+     "model": "nvidia/nemotron-3-super-120b-a12b",
+     "latency_s": 2.224,
+     "prompt_tokens": 328,
+     "completion_tokens": 188,
+     "cost_usd": 0.0002676,
+     "finish_reason": "stop"
+    }
+   ]
+  },
+  {
+   "claim": "claim_labs_multi.json",
+   "total": 66.5,
+   "explanation": "Blood test cost $45.00, you owe $11.00. Lipid test cost $95.00, you owe $19.00. A1c test cost $70.00, you owe $13.50. Thyroid test cost $120.00, you owe $23.00. Your total due is $66.50. Payment plans exist.",
+   "source": "nemotron",
+   "auditor": {
+    "ok": true,
+    "problems": []
+   },
+   "guardrail_violations": [],
+   "latency_s": 12.367,
+   "calls": [
+    {
+     "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+     "latency_s": 9.554,
+     "prompt_tokens": 211,
+     "completion_tokens": 1032,
+     "cost_usd": 0.00026033999999999996,
+     "finish_reason": "stop"
+    },
+    {
+     "model": "nvidia/nemotron-3-super-120b-a12b",
+     "latency_s": 2.813,
+     "prompt_tokens": 312,
+     "completion_tokens": 431,
+     "cost_usd": 0.0004815,
+     "finish_reason": "stop"
+    }
+   ]
+  },
+  {
+   "claim": "claim_mri_deductible.json",
+   "total": 980.0,
+   "explanation": "The charge for the MRI lumbar spine without contrast was $2,400.00. The insurer allowed $980.00, so your responsibility is $980.00. TOTAL patient owes $980.00. Payment plans exist.",
+   "source": "nemotron",
+   "auditor": {
+    "ok": true,
+    "problems": []
+   },
+   "guardrail_violations": [],
+   "latency_s": 10.128,
+   "calls": [
+    {
+     "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+     "latency_s": 8.494,
+     "prompt_tokens": 120,
+     "completion_tokens": 928,
+     "cost_usd": 0.00022992,
+     "finish_reason": "stop"
+    },
+    {
+     "model": "nvidia/nemotron-3-super-120b-a12b",
+     "latency_s": 1.633,
+     "prompt_tokens": 186,
+     "completion_tokens": 136,
+     "cost_usd": 0.0001782,
+     "finish_reason": "stop"
+    }
+   ]
+  },
+  {
+   "claim": "claim_physical_therapy.json",
+   "total": 198.0,
+   "explanation": "The evaluation cost $260.00 but you only owe $105.00. Two exercise units cost $180.00 and you owe $62.00. Manual therapy billed $120.00, you owe $31.00. Your total responsibility is $198.00. Payment plans exist.",
+   "source": "nemotron",
+   "auditor": {
+    "ok": true,
+    "problems": []
+   },
+   "guardrail_violations": [],
+   "latency_s": 10.271,
+   "calls": [
+    {
+     "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+     "latency_s": 8.328,
+     "prompt_tokens": 183,
+     "completion_tokens": 920,
+     "cost_usd": 0.00023177999999999998,
+     "finish_reason": "stop"
+    },
+    {
+     "model": "nvidia/nemotron-3-super-120b-a12b",
+     "latency_s": 1.943,
+     "prompt_tokens": 268,
+     "completion_tokens": 317,
+     "cost_usd": 0.0003657,
+     "finish_reason": "stop"
+    }
+   ]
+  },
+  {
+   "claim": "claim_preventive_zero.json",
+   "total": 0.0,
+   "explanation": "The visit was billed $280.00, the allowed amount is $0.00, and your patient responsibility is $0.00. Your total amount due is $0.00. Payment plans exist.",
+   "source": "nemotron",
+   "auditor": {
+    "ok": true,
+    "problems": []
+   },
+   "guardrail_violations": [],
+   "latency_s": 6.808,
+   "calls": [
+    {
+     "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+     "latency_s": 5.022,
+     "prompt_tokens": 111,
+     "completion_tokens": 609,
+     "cost_usd": 0.00015282,
+     "finish_reason": "stop"
+    },
+    {
+     "model": "nvidia/nemotron-3-super-120b-a12b",
+     "latency_s": 1.786,
+     "prompt_tokens": 165,
+     "completion_tokens": 175,
+     "cost_usd": 0.000207,
+     "finish_reason": "stop"
+    }
+   ]
+  },
+  {
+   "claim": "claim_primary_care.json",
+   "total": 129.85,
+   "explanation": "Your office visit was billed $220.00, but the allowed amount is $110.00, so you owe $38.00. The lab test was billed $150.00, allowed $18.50, you owe $1.85. The cosmetic consult was billed $90.00, allowed $90.00, you owe $90.00. In total you owe $129.85. Payment plans are available.",
+   "source": "nemotron",
+   "auditor": {
+    "ok": true,
+    "problems": []
+   },
+   "guardrail_violations": [],
+   "latency_s": 8.145,
+   "calls": [
+    {
+     "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+     "latency_s": 6.13,
+     "prompt_tokens": 183,
+     "completion_tokens": 862,
+     "cost_usd": 0.00021785999999999998,
+     "finish_reason": "stop"
+    },
+    {
+     "model": "nvidia/nemotron-3-super-120b-a12b",
+     "latency_s": 2.014,
+     "prompt_tokens": 302,
+     "completion_tokens": 165,
+     "cost_usd": 0.00023909999999999998,
+     "finish_reason": "stop"
+    }
+   ]
+  },
+  {
+   "claim": "claim_specialist_copay.json",
+   "total": 50.0,
+   "explanation": "The $420.00 specialist visit was reduced to $210.00 allowed, leaving you with a $50.00 responsibility. The $110.00 ECG was allowed $17.00, so you owe $0.00. You owe $50.00 total; payment plans exist.",
+   "source": "nemotron",
+   "auditor": {
+    "ok": true,
+    "problems": []
+   },
+   "guardrail_violations": [],
+   "latency_s": 7.12,
+   "calls": [
+    {
+     "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+     "latency_s": 5.294,
+     "prompt_tokens": 147,
+     "completion_tokens": 810,
+     "cost_usd": 0.00020322,
+     "finish_reason": "stop"
+    },
+    {
+     "model": "nvidia/nemotron-3-super-120b-a12b",
+     "latency_s": 1.825,
+     "prompt_tokens": 227,
+     "completion_tokens": 225,
+     "cost_usd": 0.0002706,
+     "finish_reason": "stop"
+    }
+   ]
+  },
+  {
+   "claim": "claim_surgery_oop_cap.json",
+   "total": 900.0,
+   "explanation": "Your knee arthroscopy was billed $9,800.00, the allowed amount is $4,200.00, so your responsibility is $900.00. Anesthesia for the knee procedure was billed $1,600.00, allowed $700.00, and you owe $0.00. The total you owe is $900.00. Payment plans exist.",
+   "source": "nemotron",
+   "auditor": {
+    "ok": true,
+    "problems": []
+   },
+   "guardrail_violations": [],
+   "latency_s": 10.248,
+   "calls": [
+    {
+     "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+     "latency_s": 8.416,
+     "prompt_tokens": 158,
+     "completion_tokens": 1196,
+     "cost_usd": 0.00029652,
+     "finish_reason": "stop"
+    },
+    {
+     "model": "nvidia/nemotron-3-super-120b-a12b",
+     "latency_s": 1.832,
+     "prompt_tokens": 261,
+     "completion_tokens": 93,
+     "cost_usd": 0.000162,
+     "finish_reason": "stop"
+    }
+   ]
+  },
+  {
+   "claim": "claim_urgent_care.json",
+   "total": 75.0,
+   "explanation": "You were billed $310.00 for the urgent care visit, the allowed amount is $165.00, so your share is $75.00. The rapid strep test was billed $60.00, allowed $22.00, and you owe $0.00. Total you owe $75.00. Payment plans exist.",
+   "source": "nemotron",
+   "auditor": {
+    "ok": true,
+    "problems": []
+   },
+   "guardrail_violations": [],
+   "latency_s": 12.965,
+   "calls": [
+    {
+     "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+     "latency_s": 11.363,
+     "prompt_tokens": 147,
+     "completion_tokens": 1504,
+     "cost_usd": 0.00036977999999999995,
+     "finish_reason": "stop"
+    },
+    {
+     "model": "nvidia/nemotron-3-super-120b-a12b",
+     "latency_s": 1.602,
+     "prompt_tokens": 238,
+     "completion_tokens": 166,
+     "cost_usd": 0.0002208,
+     "finish_reason": "stop"
+    }
+   ]
+  }
+ ],
+ "B": [
+  {
+   "claim": "claim_dental_not_covered.json",
+   "case": "correct",
+   "expect_ok": true,
+   "auditor_ok": true,
+   "problems": [],
+   "guardrails": [],
+   "calls": [
+    {
+     "model": "nvidia/nemotron-3-super-120b-a12b",
+     "latency_s": 1.726,
+     "prompt_tokens": 221,
+     "completion_tokens": 171,
+     "cost_usd": 0.00022019999999999999,
+     "finish_reason": "stop"
+    }
+   ]
+  },
+  {
+   "claim": "claim_dental_not_covered.json",
+   "case": "inflated_total",
+   "expect_ok": false,
+   "auditor_ok": false,
+   "problems": [
+    "Incorrect total patient owed: expected $175.00 but explanation states $225.00"
+   ],
+   "guardrails": [
+    "unsupported_amount:225.00",
+    "missing_total"
+   ],
+   "calls": [
+    {
+     "model": "nvidia/nemotron-3-super-120b-a12b",
+     "latency_s": 1.789,
+     "prompt_tokens": 221,
+     "completion_tokens": 196,
+     "cost_usd": 0.0002427,
+     "finish_reason": "stop"
+    }
+   ]
+  },
+  {
+   "claim": "claim_dental_not_covered.json",
+   "case": "invented_refund",
+   "expect_ok": false,
+   "auditor_ok": false,
+   "problems": [
+    "The explanation mentions a $50.00 refund from the plan, which is not present in the ledger."
+   ],
+   "guardrails": [
+    "unsupported_amount:50.00"
+   ],
+   "calls": [
+    {
+     "model": "nvidia/nemotron-3-super-120b-a12b",
+     "latency_s": 2.242,
+     "prompt_tokens": 237,
+     "completion_tokens": 263,
+     "cost_usd": 0.0003078,
+     "finish_reason": "stop"
+    }
+   ]
+  },
+  {
+   "claim": "claim_er_visit.json",
+   "case": "correct",
+   "expect_ok": true,
+   "auditor_ok": true,
+   "problems": [],
+   "guardrails": [],
+   "calls": [
+    {
+     "model": "nvidia/nemotron-3-super-120b-a12b",
+     "latency_s": 5.99,
+     "prompt_tokens": 266,
+     "completion_tokens": 112,
+     "cost_usd": 0.0001806,
+     "finish_reason": "stop"
+    }
+   ]
+  },
+  {
+   "claim": "claim_er_visit.json",
+   "case": "inflated_total",
+   "expect_ok": false,
+   "auditor_ok": false,
+   "problems": [
+    "Total patient owed amount does not match the sum of line items; expected $551.00 based on $524.00 + $19.00 + $8.00 but explanation states $601.00."
+   ],
+   "guardrails": [
+    "unsupported_amount:601.00",
+    "missing_total"
+   ],
+   "calls": [
+    {
+     "model": "nvidia/nemotron-3-super-120b-a12b",
+     "latency_s": 2.461,
+     "prompt_tokens": 266,
+     "completion_tokens": 330,
+     "cost_usd": 0.0003768,
+     "finish_reason": "stop"
+    }
+   ]
+  },
+  {
+   "claim": "claim_er_visit.json",
+   "case": "invented_refund",
+   "expect_ok": false,
+   "auditor_ok": false,
+   "problems": [
+    "The explanation mentions a $50.00 refund from the plan, which is not present in the ledger."
+   ],
+   "guardrails": [
+    "unsupported_amount:50.00"
+   ],
+   "calls": [
+    {
+     "model": "nvidia/nemotron-3-super-120b-a12b",
+     "latency_s": 2.454,
+     "prompt_tokens": 282,
+     "completion_tokens": 318,
+     "cost_usd": 0.00037079999999999996,
+     "finish_reason": "stop"
+    }
+   ]
+  },
+  {
+   "claim": "claim_labs_multi.json",
+   "case": "correct",
+   "expect_ok": true,
+   "auditor_ok": true,
+   "problems": [],
+   "guardrails": [],
+   "calls": [
+    {
+     "model": "nvidia/nemotron-3-super-120b-a12b",
+     "latency_s": 2.259,
+     "prompt_tokens": 296,
+     "completion_tokens": 152,
+     "cost_usd": 0.00022560000000000004,
+     "finish_reason": "stop"
+    }
+   ]
+  },
+  {
+   "claim": "claim_labs_multi.json",
+   "case": "inflated_total",
+   "expect_ok": false,
+   "auditor_ok": false,
+   "problems": [
+    "Total amount stated ($116.50) does not match sum of individual amounts ($66.50)."
+   ],
+   "guardrails": [
+    "unsupported_amount:116.50",
+    "missing_total"
+   ],
+   "calls": [
+    {
+     "model": "nvidia/nemotron-3-super-120b-a12b",
+     "latency_s": 2.359,
+     "prompt_tokens": 297,
+     "completion_tokens": 291,
+     "cost_usd": 0.000351,
+     "finish_reason": "stop"
+    }
+   ]
+  },
+  {
+   "claim": "claim_labs_multi.json",
+   "case": "invented_refund",
+   "expect_ok": false,
+   "auditor_ok": false,
+   "problems": [
+    "Explanation mentions a $50.00 refund which is not indicated in the ledger."
+   ],
+   "guardrails": [
+    "unsupported_amount:50.00"
+   ],
+   "calls": [
+    {
+     "model": "nvidia/nemotron-3-super-120b-a12b",
+     "latency_s": 2.603,
+     "prompt_tokens": 312,
+     "completion_tokens": 279,
+     "cost_usd": 0.0003447,
+     "finish_reason": "stop"
+    }
+   ]
+  },
+  {
+   "claim": "claim_mri_deductible.json",
+   "case": "correct",
+   "expect_ok": true,
+   "auditor_ok": true,
+   "problems": [],
+   "guardrails": [],
+   "calls": [
+    {
+     "model": "nvidia/nemotron-3-super-120b-a12b",
+     "latency_s": 1.386,
+     "prompt_tokens": 167,
+     "completion_tokens": 110,
+     "cost_usd": 0.0001491,
+     "finish_reason": "stop"
+    }
+   ]
+  },
+  {
+   "claim": "claim_mri_deductible.json",
+   "case": "inflated_total",
+   "expect_ok": false,
+   "auditor_ok": false,
+   "problems": [
+    "Total patient owes stated as $1,030.00 does not match ledger total of $980.00.",
+    "Amount $1,030.00 not found in ledger."
+   ],
+   "guardrails": [
+    "unsupported_amount:1,030.00"
+   ],
+   "calls": [
+    {
+     "model": "nvidia/nemotron-3-super-120b-a12b",
+     "latency_s": 2.378,
+     "prompt_tokens": 169,
+     "completion_tokens": 354,
+     "cost_usd": 0.00036930000000000003,
+     "finish_reason": "stop"
+    }
+   ]
+  },
+  {
+   "claim": "claim_mri_deductible.json",
+   "case": "invented_refund",
+   "expect_ok": false,
+   "auditor_ok": false,
+   "problems": [
+    "The explanation mentions a '$50.00 refund from your plan' which is not present in the ledger."
+   ],
+   "guardrails": [
+    "unsupported_amount:50.00"
+   ],
+   "calls": [
+    {
+     "model": "nvidia/nemotron-3-super-120b-a12b",
+     "latency_s": 3.825,
+     "prompt_tokens": 183,
+     "completion_tokens": 329,
+     "cost_usd": 0.000351,
+     "finish_reason": "stop"
+    }
+   ]
+  },
+  {
+   "claim": "claim_physical_therapy.json",
+   "case": "correct",
+   "expect_ok": true,
+   "auditor_ok": true,
+   "problems": [],
+   "guardrails": [],
+   "calls": [
+    {
+     "model": "nvidia/nemotron-3-super-120b-a12b",
+     "latency_s": 1.575,
+     "prompt_tokens": 257,
+     "completion_tokens": 152,
+     "cost_usd": 0.0002139,
+     "finish_reason": "stop"
+    }
+   ]
+  },
+  {
+   "claim": "claim_physical_therapy.json",
+   "case": "inflated_total",
+   "expect_ok": false,
+   "auditor_ok": false,
+   "problems": [
+    "The total patient responsibility stated ($248.00) does not match the sum of individual amounts from the ledger ($198.00)."
+   ],
+   "guardrails": [
+    "unsupported_amount:248.00",
+    "missing_total"
+   ],
+   "calls": [
+    {
+     "model": "nvidia/nemotron-3-super-120b-a12b",
+     "latency_s": 2.591,
+     "prompt_tokens": 257,
+     "completion_tokens": 253,
+     "cost_usd": 0.00030480000000000004,
+     "finish_reason": "stop"
+    }
+   ]
+  },
+  {
+   "claim": "claim_physical_therapy.json",
+   "case": "invented_refund",
+   "expect_ok": false,
+   "auditor_ok": false,
+   "problems": [
+    "$50.00 refund from plan not listed in ledger"
+   ],
+   "guardrails": [
+    "unsupported_amount:50.00"
+   ],
+   "calls": [
+    {
+     "model": "nvidia/nemotron-3-super-120b-a12b",
+     "latency_s": 3.226,
+     "prompt_tokens": 273,
+     "completion_tokens": 270,
+     "cost_usd": 0.0003249,
+     "finish_reason": "stop"
+    }
+   ]
+  },
+  {
+   "claim": "claim_preventive_zero.json",
+   "case": "correct",
+   "expect_ok": true,
+   "auditor_ok": true,
+   "problems": [],
+   "guardrails": [],
+   "calls": [
+    {
+     "model": "nvidia/nemotron-3-super-120b-a12b",
+     "latency_s": 2.093,
+     "prompt_tokens": 141,
+     "completion_tokens": 176,
+     "cost_usd": 0.0002007,
+     "finish_reason": "stop"
+    }
+   ]
+  },
+  {
+   "claim": "claim_preventive_zero.json",
+   "case": "inflated_total",
+   "expect_ok": false,
+   "auditor_ok": false,
+   "problems": [
+    "Amount $50.00 claimed for patient responsibility does not match ledger (patient owes $0.00)",
+    "Total stated ($50.00) differs from ledger total ($0.00)"
+   ],
+   "guardrails": [
+    "unsupported_amount:50.00"
+   ],
+   "calls": [
+    {
+     "model": "nvidia/nemotron-3-super-120b-a12b",
+     "latency_s": 4.886,
+     "prompt_tokens": 142,
+     "completion_tokens": 309,
+     "cost_usd": 0.00032070000000000004,
+     "finish_reason": "stop"
+    }
+   ]
+  },
+  {
+   "claim": "claim_preventive_zero.json",
+   "case": "invented_refund",
+   "expect_ok": false,
+   "auditor_ok": false,
+   "problems": [
+    "Refund of $50.00 mentioned is not in the ledger.",
+    "Statement about payment plans being available is confusing given a $0.00 balance."
+   ],
+   "guardrails": [
+    "unsupported_amount:50.00"
+   ],
+   "calls": [
+    {
+     "model": "nvidia/nemotron-3-super-120b-a12b",
+     "latency_s": 3.259,
+     "prompt_tokens": 157,
+     "completion_tokens": 366,
+     "cost_usd": 0.00037650000000000004,
+     "finish_reason": "stop"
+    }
+   ]
+  },
+  {
+   "claim": "claim_primary_care.json",
+   "case": "correct",
+   "expect_ok": true,
+   "auditor_ok": true,
+   "problems": [],
+   "guardrails": [],
+   "calls": [
+    {
+     "model": "nvidia/nemotron-3-super-120b-a12b",
+     "latency_s": 1.76,
+     "prompt_tokens": 257,
+     "completion_tokens": 138,
+     "cost_usd": 0.00020130000000000001,
+     "finish_reason": "stop"
+    }
+   ]
+  },
+  {
+   "claim": "claim_primary_care.json",
+   "case": "inflated_total",
+   "expect_ok": false,
+   "auditor_ok": false,
+   "problems": [
+    "Total patient owed amount does not match sum of line items; expected $129.85 but given $179.85"
+   ],
+   "guardrails": [
+    "unsupported_amount:179.85",
+    "missing_total"
+   ],
+   "calls": [
+    {
+     "model": "nvidia/nemotron-3-super-120b-a12b",
+     "latency_s": 2.792,
+     "prompt_tokens": 257,
+     "completion_tokens": 284,
+     "cost_usd": 0.0003327,
+     "finish_reason": "stop"
+    }
+   ]
+  },
+  {
+   "claim": "claim_primary_care.json",
+   "case": "invented_refund",
+   "expect_ok": false,
+   "auditor_ok": false,
+   "problems": [
+    "Unexpected claim: $50.00 refund from plan not found in ledger"
+   ],
+   "guardrails": [
+    "unsupported_amount:50.00"
+   ],
+   "calls": [
+    {
+     "model": "nvidia/nemotron-3-super-120b-a12b",
+     "latency_s": 2.643,
+     "prompt_tokens": 273,
+     "completion_tokens": 256,
+     "cost_usd": 0.0003123,
+     "finish_reason": "stop"
+    }
+   ]
+  },
+  {
+   "claim": "claim_specialist_copay.json",
+   "case": "correct",
+   "expect_ok": true,
+   "auditor_ok": false,
+   "problems": [
+    "Explanation omits the ECG with interpretation line item, which may be misleading about the breakdown of charges."
+   ],
+   "guardrails": [],
+   "calls": [
+    {
+     "model": "nvidia/nemotron-3-super-120b-a12b",
+     "latency_s": 6.34,
+     "prompt_tokens": 191,
+     "completion_tokens": 449,
+     "cost_usd": 0.00046140000000000005,
+     "finish_reason": "stop"
+    }
+   ]
+  },
+  {
+   "claim": "claim_specialist_copay.json",
+   "case": "inflated_total",
+   "expect_ok": false,
+   "auditor_ok": false,
+   "problems": [
+    "The explanation states 'Your total is $100.00', but the ledger shows the total patient owes is $50.00."
+   ],
+   "guardrails": [
+    "unsupported_amount:100.00"
+   ],
+   "calls": [
+    {
+     "model": "nvidia/nemotron-3-super-120b-a12b",
+     "latency_s": 2.037,
+     "prompt_tokens": 192,
+     "completion_tokens": 260,
+     "cost_usd": 0.00029160000000000004,
+     "finish_reason": "stop"
+    }
+   ]
+  },
+  {
+   "claim": "claim_specialist_copay.json",
+   "case": "invented_refund",
+   "expect_ok": false,
+   "auditor_ok": false,
+   "problems": [
+    "The explanation mentions a $50.00 refund from the plan, which is not present in the ledger and creates a conflicting claim about the patient's responsibility."
+   ],
+   "guardrails": [],
+   "calls": [
+    {
+     "model": "nvidia/nemotron-3-super-120b-a12b",
+     "latency_s": 2.893,
+     "prompt_tokens": 207,
+     "completion_tokens": 373,
+     "cost_usd": 0.00039779999999999997,
+     "finish_reason": "stop"
+    }
+   ]
+  },
+  {
+   "claim": "claim_surgery_oop_cap.json",
+   "case": "correct",
+   "expect_ok": true,
+   "auditor_ok": true,
+   "problems": [],
+   "guardrails": [],
+   "calls": [
+    {
+     "model": "nvidia/nemotron-3-super-120b-a12b",
+     "latency_s": 2.014,
+     "prompt_tokens": 204,
+     "completion_tokens": 206,
+     "cost_usd": 0.0002466,
+     "finish_reason": "stop"
+    }
+   ]
+  },
+  {
+   "claim": "claim_surgery_oop_cap.json",
+   "case": "inflated_total",
+   "expect_ok": false,
+   "auditor_ok": false,
+   "problems": [
+    "The stated total of $950.00 does not match the sum of patient responsibilities from the ledger ($900.00)."
+   ],
+   "guardrails": [
+    "unsupported_amount:950.00"
+   ],
+   "calls": [
+    {
+     "model": "nvidia/nemotron-3-super-120b-a12b",
+     "latency_s": 2.344,
+     "prompt_tokens": 204,
+     "completion_tokens": 292,
+     "cost_usd": 0.000324,
+     "finish_reason": "stop"
+    }
+   ]
+  },
+  {
+   "claim": "claim_surgery_oop_cap.json",
+   "case": "invented_refund",
+   "expect_ok": false,
+   "auditor_ok": false,
+   "problems": [
+    "The explanation mentions a $50.00 refund that is not present in the ledger."
+   ],
+   "guardrails": [
+    "unsupported_amount:50.00"
+   ],
+   "calls": [
+    {
+     "model": "nvidia/nemotron-3-super-120b-a12b",
+     "latency_s": 3.699,
+     "prompt_tokens": 220,
+     "completion_tokens": 358,
+     "cost_usd": 0.0003882,
+     "finish_reason": "stop"
+    }
+   ]
+  },
+  {
+   "claim": "claim_urgent_care.json",
+   "case": "correct",
+   "expect_ok": true,
+   "auditor_ok": true,
+   "problems": [],
+   "guardrails": [],
+   "calls": [
+    {
+     "model": "nvidia/nemotron-3-super-120b-a12b",
+     "latency_s": 1.777,
+     "prompt_tokens": 191,
+     "completion_tokens": 151,
+     "cost_usd": 0.00019319999999999998,
+     "finish_reason": "stop"
+    }
+   ]
+  },
+  {
+   "claim": "claim_urgent_care.json",
+   "case": "inflated_total",
+   "expect_ok": false,
+   "auditor_ok": false,
+   "problems": [
+    "The explanation states the patient's total is $125.00, but the ledger shows the total patient owes is $75.00.",
+    "The explanation omits mention of the rapid strep test (patient owes $0.00) which could be confusing."
+   ],
+   "guardrails": [
+    "unsupported_amount:125.00"
+   ],
+   "calls": [
+    {
+     "model": "nvidia/nemotron-3-super-120b-a12b",
+     "latency_s": 4.052,
+     "prompt_tokens": 192,
+     "completion_tokens": 376,
+     "cost_usd": 0.000396,
+     "finish_reason": "stop"
+    }
+   ]
+  },
+  {
+   "claim": "claim_urgent_care.json",
+   "case": "invented_refund",
+   "expect_ok": false,
+   "auditor_ok": false,
+   "problems": [
+    "Explanation mentions a $50.00 refund that is not present in the ledger"
+   ],
+   "guardrails": [
+    "unsupported_amount:50.00"
+   ],
+   "calls": [
+    {
+     "model": "nvidia/nemotron-3-super-120b-a12b",
+     "latency_s": 3.652,
+     "prompt_tokens": 207,
+     "completion_tokens": 347,
+     "cost_usd": 0.0003744,
+     "finish_reason": "stop"
+    }
+   ]
+  }
+ ],
+ "calls": [
+  {
+   "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+   "latency_s": 9.604,
+   "prompt_tokens": 156,
+   "completion_tokens": 949,
+   "cost_usd": 0.00023712,
+   "finish_reason": "stop"
+  },
+  {
+   "model": "nvidia/nemotron-3-super-120b-a12b",
+   "latency_s": 1.661,
+   "prompt_tokens": 254,
+   "completion_tokens": 142,
+   "cost_usd": 0.000204,
+   "finish_reason": "stop"
+  },
+  {
+   "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+   "latency_s": 6.55,
+   "prompt_tokens": 190,
+   "completion_tokens": 626,
+   "cost_usd": 0.00016163999999999998,
+   "finish_reason": "stop"
+  },
+  {
+   "model": "nvidia/nemotron-3-super-120b-a12b",
+   "latency_s": 2.224,
+   "prompt_tokens": 328,
+   "completion_tokens": 188,
+   "cost_usd": 0.0002676,
+   "finish_reason": "stop"
+  },
+  {
+   "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+   "latency_s": 9.554,
+   "prompt_tokens": 211,
+   "completion_tokens": 1032,
+   "cost_usd": 0.00026033999999999996,
+   "finish_reason": "stop"
+  },
+  {
+   "model": "nvidia/nemotron-3-super-120b-a12b",
+   "latency_s": 2.813,
+   "prompt_tokens": 312,
+   "completion_tokens": 431,
+   "cost_usd": 0.0004815,
+   "finish_reason": "stop"
+  },
+  {
+   "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+   "latency_s": 8.494,
+   "prompt_tokens": 120,
+   "completion_tokens": 928,
+   "cost_usd": 0.00022992,
+   "finish_reason": "stop"
+  },
+  {
+   "model": "nvidia/nemotron-3-super-120b-a12b",
+   "latency_s": 1.633,
+   "prompt_tokens": 186,
+   "completion_tokens": 136,
+   "cost_usd": 0.0001782,
+   "finish_reason": "stop"
+  },
+  {
+   "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+   "latency_s": 8.328,
+   "prompt_tokens": 183,
+   "completion_tokens": 920,
+   "cost_usd": 0.00023177999999999998,
+   "finish_reason": "stop"
+  },
+  {
+   "model": "nvidia/nemotron-3-super-120b-a12b",
+   "latency_s": 1.943,
+   "prompt_tokens": 268,
+   "completion_tokens": 317,
+   "cost_usd": 0.0003657,
+   "finish_reason": "stop"
+  },
+  {
+   "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+   "latency_s": 5.022,
+   "prompt_tokens": 111,
+   "completion_tokens": 609,
+   "cost_usd": 0.00015282,
+   "finish_reason": "stop"
+  },
+  {
+   "model": "nvidia/nemotron-3-super-120b-a12b",
+   "latency_s": 1.786,
+   "prompt_tokens": 165,
+   "completion_tokens": 175,
+   "cost_usd": 0.000207,
+   "finish_reason": "stop"
+  },
+  {
+   "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+   "latency_s": 6.13,
+   "prompt_tokens": 183,
+   "completion_tokens": 862,
+   "cost_usd": 0.00021785999999999998,
+   "finish_reason": "stop"
+  },
+  {
+   "model": "nvidia/nemotron-3-super-120b-a12b",
+   "latency_s": 2.014,
+   "prompt_tokens": 302,
+   "completion_tokens": 165,
+   "cost_usd": 0.00023909999999999998,
+   "finish_reason": "stop"
+  },
+  {
+   "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+   "latency_s": 5.294,
+   "prompt_tokens": 147,
+   "completion_tokens": 810,
+   "cost_usd": 0.00020322,
+   "finish_reason": "stop"
+  },
+  {
+   "model": "nvidia/nemotron-3-super-120b-a12b",
+   "latency_s": 1.825,
+   "prompt_tokens": 227,
+   "completion_tokens": 225,
+   "cost_usd": 0.0002706,
+   "finish_reason": "stop"
+  },
+  {
+   "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+   "latency_s": 8.416,
+   "prompt_tokens": 158,
+   "completion_tokens": 1196,
+   "cost_usd": 0.00029652,
+   "finish_reason": "stop"
+  },
+  {
+   "model": "nvidia/nemotron-3-super-120b-a12b",
+   "latency_s": 1.832,
+   "prompt_tokens": 261,
+   "completion_tokens": 93,
+   "cost_usd": 0.000162,
+   "finish_reason": "stop"
+  },
+  {
+   "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+   "latency_s": 11.363,
+   "prompt_tokens": 147,
+   "completion_tokens": 1504,
+   "cost_usd": 0.00036977999999999995,
+   "finish_reason": "stop"
+  },
+  {
+   "model": "nvidia/nemotron-3-super-120b-a12b",
+   "latency_s": 1.602,
+   "prompt_tokens": 238,
+   "completion_tokens": 166,
+   "cost_usd": 0.0002208,
+   "finish_reason": "stop"
+  },
+  {
+   "model": "nvidia/nemotron-3-super-120b-a12b",
+   "latency_s": 1.726,
+   "prompt_tokens": 221,
+   "completion_tokens": 171,
+   "cost_usd": 0.00022019999999999999,
+   "finish_reason": "stop"
+  },
+  {
+   "model": "nvidia/nemotron-3-super-120b-a12b",
+   "latency_s": 1.789,
+   "prompt_tokens": 221,
+   "completion_tokens": 196,
+   "cost_usd": 0.0002427,
+   "finish_reason": "stop"
+  },
+  {
+   "model": "nvidia/nemotron-3-super-120b-a12b",
+   "latency_s": 2.242,
+   "prompt_tokens": 237,
+   "completion_tokens": 263,
+   "cost_usd": 0.0003078,
+   "finish_reason": "stop"
+  },
+  {
+   "model": "nvidia/nemotron-3-super-120b-a12b",
+   "latency_s": 5.99,
+   "prompt_tokens": 266,
+   "completion_tokens": 112,
+   "cost_usd": 0.0001806,
+   "finish_reason": "stop"
+  },
+  {
+   "model": "nvidia/nemotron-3-super-120b-a12b",
+   "latency_s": 2.461,
+   "prompt_tokens": 266,
+   "completion_tokens": 330,
+   "cost_usd": 0.0003768,
+   "finish_reason": "stop"
+  },
+  {
+   "model": "nvidia/nemotron-3-super-120b-a12b",
+   "latency_s": 2.454,
+   "prompt_tokens": 282,
+   "completion_tokens": 318,
+   "cost_usd": 0.00037079999999999996,
+   "finish_reason": "stop"
+  },
+  {
+   "model": "nvidia/nemotron-3-super-120b-a12b",
+   "latency_s": 2.259,
+   "prompt_tokens": 296,
+   "completion_tokens": 152,
+   "cost_usd": 0.00022560000000000004,
+   "finish_reason": "stop"
+  },
+  {
+   "model": "nvidia/nemotron-3-super-120b-a12b",
+   "latency_s": 2.359,
+   "prompt_tokens": 297,
+   "completion_tokens": 291,
+   "cost_usd": 0.000351,
+   "finish_reason": "stop"
+  },
+  {
+   "model": "nvidia/nemotron-3-super-120b-a12b",
+   "latency_s": 2.603,
+   "prompt_tokens": 312,
+   "completion_tokens": 279,
+   "cost_usd": 0.0003447,
+   "finish_reason": "stop"
+  },
+  {
+   "model": "nvidia/nemotron-3-super-120b-a12b",
+   "latency_s": 1.386,
+   "prompt_tokens": 167,
+   "completion_tokens": 110,
+   "cost_usd": 0.0001491,
+   "finish_reason": "stop"
+  },
+  {
+   "model": "nvidia/nemotron-3-super-120b-a12b",
+   "latency_s": 2.378,
+   "prompt_tokens": 169,
+   "completion_tokens": 354,
+   "cost_usd": 0.00036930000000000003,
+   "finish_reason": "stop"
+  },
+  {
+   "model": "nvidia/nemotron-3-super-120b-a12b",
+   "latency_s": 3.825,
+   "prompt_tokens": 183,
+   "completion_tokens": 329,
+   "cost_usd": 0.000351,
+   "finish_reason": "stop"
+  },
+  {
+   "model": "nvidia/nemotron-3-super-120b-a12b",
+   "latency_s": 1.575,
+   "prompt_tokens": 257,
+   "completion_tokens": 152,
+   "cost_usd": 0.0002139,
+   "finish_reason": "stop"
+  },
+  {
+   "model": "nvidia/nemotron-3-super-120b-a12b",
+   "latency_s": 2.591,
+   "prompt_tokens": 257,
+   "completion_tokens": 253,
+   "cost_usd": 0.00030480000000000004,
+   "finish_reason": "stop"
+  },
+  {
+   "model": "nvidia/nemotron-3-super-120b-a12b",
+   "latency_s": 3.226,
+   "prompt_tokens": 273,
+   "completion_tokens": 270,
+   "cost_usd": 0.0003249,
+   "finish_reason": "stop"
+  },
+  {
+   "model": "nvidia/nemotron-3-super-120b-a12b",
+   "latency_s": 2.093,
+   "prompt_tokens": 141,
+   "completion_tokens": 176,
+   "cost_usd": 0.0002007,
+   "finish_reason": "stop"
+  },
+  {
+   "model": "nvidia/nemotron-3-super-120b-a12b",
+   "latency_s": 4.886,
+   "prompt_tokens": 142,
+   "completion_tokens": 309,
+   "cost_usd": 0.00032070000000000004,
+   "finish_reason": "stop"
+  },
+  {
+   "model": "nvidia/nemotron-3-super-120b-a12b",
+   "latency_s": 3.259,
+   "prompt_tokens": 157,
+   "completion_tokens": 366,
+   "cost_usd": 0.00037650000000000004,
+   "finish_reason": "stop"
+  },
+  {
+   "model": "nvidia/nemotron-3-super-120b-a12b",
+   "latency_s": 1.76,
+   "prompt_tokens": 257,
+   "completion_tokens": 138,
+   "cost_usd": 0.00020130000000000001,
+   "finish_reason": "stop"
+  },
+  {
+   "model": "nvidia/nemotron-3-super-120b-a12b",
+   "latency_s": 2.792,
+   "prompt_tokens": 257,
+   "completion_tokens": 284,
+   "cost_usd": 0.0003327,
+   "finish_reason": "stop"
+  },
+  {
+   "model": "nvidia/nemotron-3-super-120b-a12b",
+   "latency_s": 2.643,
+   "prompt_tokens": 273,
+   "completion_tokens": 256,
+   "cost_usd": 0.0003123,
+   "finish_reason": "stop"
+  },
+  {
+   "model": "nvidia/nemotron-3-super-120b-a12b",
+   "latency_s": 6.34,
+   "prompt_tokens": 191,
+   "completion_tokens": 449,
+   "cost_usd": 0.00046140000000000005,
+   "finish_reason": "stop"
+  },
+  {
+   "model": "nvidia/nemotron-3-super-120b-a12b",
+   "latency_s": 2.037,
+   "prompt_tokens": 192,
+   "completion_tokens": 260,
+   "cost_usd": 0.00029160000000000004,
+   "finish_reason": "stop"
+  },
+  {
+   "model": "nvidia/nemotron-3-super-120b-a12b",
+   "latency_s": 2.893,
+   "prompt_tokens": 207,
+   "completion_tokens": 373,
+   "cost_usd": 0.00039779999999999997,
+   "finish_reason": "stop"
+  },
+  {
+   "model": "nvidia/nemotron-3-super-120b-a12b",
+   "latency_s": 2.014,
+   "prompt_tokens": 204,
+   "completion_tokens": 206,
+   "cost_usd": 0.0002466,
+   "finish_reason": "stop"
+  },
+  {
+   "model": "nvidia/nemotron-3-super-120b-a12b",
+   "latency_s": 2.344,
+   "prompt_tokens": 204,
+   "completion_tokens": 292,
+   "cost_usd": 0.000324,
+   "finish_reason": "stop"
+  },
+  {
+   "model": "nvidia/nemotron-3-super-120b-a12b",
+   "latency_s": 3.699,
+   "prompt_tokens": 220,
+   "completion_tokens": 358,
+   "cost_usd": 0.0003882,
+   "finish_reason": "stop"
+  },
+  {
+   "model": "nvidia/nemotron-3-super-120b-a12b",
+   "latency_s": 1.777,
+   "prompt_tokens": 191,
+   "completion_tokens": 151,
+   "cost_usd": 0.00019319999999999998,
+   "finish_reason": "stop"
+  },
+  {
+   "model": "nvidia/nemotron-3-super-120b-a12b",
+   "latency_s": 4.052,
+   "prompt_tokens": 192,
+   "completion_tokens": 376,
+   "cost_usd": 0.000396,
+   "finish_reason": "stop"
+  },
+  {
+   "model": "nvidia/nemotron-3-super-120b-a12b",
+   "latency_s": 3.652,
+   "prompt_tokens": 207,
+   "completion_tokens": 347,
+   "cost_usd": 0.0003744,
+   "finish_reason": "stop"
+  }
+ ],
+ "total_cost_usd": 0.0141081
+}

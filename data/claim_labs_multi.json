@@ -1,0 +1,35 @@
+{
+ "patient_email": "sb-patient@example.com",
+ "plan": {
+  "deductible_remaining": 100.0,
+  "coinsurance": 0.2,
+  "copay": 0.0,
+  "oop_remaining": 2500.0
+ },
+ "lines": [
+  {
+   "code": "85025",
+   "description": "Complete blood count",
+   "billed": 45.0,
+   "allowed": 11.0
+  },
+  {
+   "code": "80061",
+   "description": "Lipid panel",
+   "billed": 95.0,
+   "allowed": 19.0
+  },
+  {
+   "code": "83036",
+   "description": "Hemoglobin A1c",
+   "billed": 70.0,
+   "allowed": 13.5
+  },
+  {
+   "code": "84443",
+   "description": "Thyroid stimulating hormone",
+   "billed": 120.0,
+   "allowed": 23.0
+  }
+ ]
+}

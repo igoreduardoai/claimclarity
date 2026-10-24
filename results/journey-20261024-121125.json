@@ -1,0 +1,1181 @@
+{
+ "runs": [
+  {
+   "document": "eob_er_complete.txt",
+   "extractor_error": null,
+   "raw_extraction": "{\n  \"deductible_remaining\": {\n    \"value\": 500.0,\n    \"evidence\": \"$500.00\"\n  },\n  \"coinsurance\": {\n    \"value\": 0.2,\n    \"evidence\": \"20%\"\n  },\n  \"copay\": {\n    \"value\": 0.0,\n    \"evidence\": \"$0.00\"\n  },\n  \"oop_remaining\": {\n    \"value\": 3000.0,\n    \"evidence\": \"$3,000.00\"\n  },\n  \"stated_patient_responsibility\": {\n    \"value\": 551.0,\n    \"evidence\": \"$551.00\"\n  },\n  \"lines\": [\n    {\n      \"code\": \"99284\",\n      \"description\": \"Emergency room visit (moderate)\",\n      \"billed\": 1450.0,\n      \"allowed\": 620.0,\n      \"evidence\": \"Emergency room visit (moderate)           99284   $1,450.00       $620.00\"\n    },\n    {\n      \"code\": \"71046\",\n      \"description\": \"Chest X-ray, 2 views\",\n      \"billed\": 380.0,\n      \"allowed\": 95.0,\n      \"evidence\": \"Chest X-ray, 2 views                      71046   $380.00         $95.00\"\n    },\n    {\n      \"code\": \"93005\",\n      \"description\": \"ECG tracing\",\n      \"billed\": 210.0,\n      \"allowed\": 40.0,\n      \"evidence\": \"ECG tracing                               93005   $210.00         $40.00\"\n    }\n  ]\n}",
+   "extracted_fields": {
+    "deductible_remaining": {
+     "value": 500.0,
+     "evidence": {
+      "start": 181,
+      "end": 188,
+      "line": 3,
+      "text": "$500.00"
+     }
+    },
+    "coinsurance": {
+     "value": 0.2,
+     "evidence": {
+      "start": 220,
+      "end": 223,
+      "line": 3,
+      "text": "20%"
+     }
+    },
+    "copay": {
+     "value": 0.0,
+     "evidence": {
+      "start": 232,
+      "end": 237,
+      "line": 3,
+      "text": "$0.00"
+     }
+    },
+    "oop_remaining": {
+     "value": 3000.0,
+     "evidence": {
+      "start": 272,
+      "end": 281,
+      "line": 3,
+      "text": "$3,000.00"
+     }
+    },
+    "stated_patient_responsibility": {
+     "value": 551.0,
+     "evidence": {
+      "start": 642,
+      "end": 649,
+      "line": 10,
+      "text": "$551.00"
+     }
+    }
+   },
+   "extracted_lines": [
+    {
+     "code": "99284",
+     "description": "Emergency room visit (moderate)",
+     "billed": 1450.0,
+     "allowed": 620.0,
+     "evidence": {
+      "start": 363,
+      "end": 436,
+      "line": 6,
+      "text": "Emergency room visit (moderate)           99284   $1,450.00       $620.00"
+     }
+    },
+    {
+     "code": "71046",
+     "description": "Chest X-ray, 2 views",
+     "billed": 380.0,
+     "allowed": 95.0,
+     "evidence": {
+      "start": 437,
+      "end": 509,
+      "line": 7,
+      "text": "Chest X-ray, 2 views                      71046   $380.00         $95.00"
+     }
+    },
+    {
+     "code": "93005",
+     "description": "ECG tracing",
+     "billed": 210.0,
+     "allowed": 40.0,
+     "evidence": {
+      "start": 510,
+      "end": 582,
+      "line": 8,
+      "text": "ECG tracing                               93005   $210.00         $40.00"
+     }
+    }
+   ],
+   "rejected": [],
+   "status": "complete",
+   "recomputed_total": 551.0,
+   "cross_check": {
+    "result": "match",
+    "stated": {
+     "value": 551.0,
+     "evidence": {
+      "start": 642,
+      "end": 649,
+      "line": 10,
+      "text": "$551.00"
+     }
+    },
+    "recomputed": 551.0
+   },
+   "explanation": "Your bill includes a $1,450.00 charge for the emergency room visit, of which $620.00 was allowed and you owe $524.00. The chest X-ray cost $380.00, allowed $95.00, you owe $19.00. The ECG tracing was $210.00, allowed $40.00, you owe $8.00. In total you owe $551.00. Payment plans exist.",
+   "explanation_source": "nemotron",
+   "auditor": {
+    "ok": true,
+    "problems": []
+   },
+   "guardrail_violations": [],
+   "conclusion": "The document's $551.00 matches the recomputed amount.",
+   "calls": [
+    {
+     "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+     "latency_s": 10.814,
+     "prompt_tokens": 414,
+     "completion_tokens": 1795,
+     "cost_usd": 0.00045564,
+     "finish_reason": "stop"
+    },
+    {
+     "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+     "latency_s": 10.283,
+     "prompt_tokens": 190,
+     "completion_tokens": 1336,
+     "cost_usd": 0.00033203999999999997,
+     "finish_reason": "stop"
+    },
+    {
+     "model": "nvidia/nemotron-3-super-120b-a12b",
+     "latency_s": 2.411,
+     "prompt_tokens": 311,
+     "completion_tokens": 314,
+     "cost_usd": 0.00037590000000000003,
+     "finish_reason": "stop"
+    }
+   ],
+   "latency_s": 23.508,
+   "cost_usd": 0.00116358,
+   "score": {
+    "status_ok": true,
+    "fields_correct": "5/5",
+    "lines_correct": "3/3",
+    "spans_verified": 8,
+    "unverified_rejected": 0,
+    "cross_ok": true,
+    "total_ok": true
+   }
+  },
+  {
+   "document": "eob_er_complete.txt",
+   "extractor_error": null,
+   "raw_extraction": "{\n  \"deductible_remaining\": {\n    \"value\": 500.0,\n    \"evidence\": \"$500.00\"\n  },\n  \"coinsurance\": {\n    \"value\": 0.2,\n    \"evidence\": \"20%\"\n  },\n  \"copay\": {\n    \"value\": 0.0,\n    \"evidence\": \"$0.00\"\n  },\n  \"oop_remaining\": {\n    \"value\": 3000.0,\n    \"evidence\": \"$3,000.00\"\n  },\n  \"stated_patient_responsibility\": {\n    \"value\": 551.0,\n    \"evidence\": \"$551.00\"\n  },\n  \"lines\": [\n    {\n      \"code\": \"99284\",\n      \"description\": \"Emergency room visit (moderate)\",\n      \"billed\": 1450.0,\n      \"allowed\": 620.0,\n      \"evidence\": \"Emergency room visit (moderate)           99284   $1,450.00       $620.00\"\n    },\n    {\n      \"code\": \"71046\",\n      \"description\": \"Chest X-ray, 2 views\",\n      \"billed\": 380.0,\n      \"allowed\": 95.0,\n      \"evidence\": \"Chest X-ray, 2 views                      71046   $380.00         $95.00\"\n    },\n    {\n      \"code\": \"93005\",\n      \"description\": \"ECG tracing\",\n      \"billed\": 210.0,\n      \"allowed\": 40.0,\n      \"evidence\": \"ECG tracing                               93005   $210.00         $40.00\"\n    }\n  ]\n}",
+   "extracted_fields": {
+    "deductible_remaining": {
+     "value": 500.0,
+     "evidence": {
+      "start": 181,
+      "end": 188,
+      "line": 3,
+      "text": "$500.00"
+     }
+    },
+    "coinsurance": {
+     "value": 0.2,
+     "evidence": {
+      "start": 220,
+      "end": 223,
+      "line": 3,
+      "text": "20%"
+     }
+    },
+    "copay": {
+     "value": 0.0,
+     "evidence": {
+      "start": 232,
+      "end": 237,
+      "line": 3,
+      "text": "$0.00"
+     }
+    },
+    "oop_remaining": {
+     "value": 3000.0,
+     "evidence": {
+      "start": 272,
+      "end": 281,
+      "line": 3,
+      "text": "$3,000.00"
+     }
+    },
+    "stated_patient_responsibility": {
+     "value": 551.0,
+     "evidence": {
+      "start": 642,
+      "end": 649,
+      "line": 10,
+      "text": "$551.00"
+     }
+    }
+   },
+   "extracted_lines": [
+    {
+     "code": "99284",
+     "description": "Emergency room visit (moderate)",
+     "billed": 1450.0,
+     "allowed": 620.0,
+     "evidence": {
+      "start": 363,
+      "end": 436,
+      "line": 6,
+      "text": "Emergency room visit (moderate)           99284   $1,450.00       $620.00"
+     }
+    },
+    {
+     "code": "71046",
+     "description": "Chest X-ray, 2 views",
+     "billed": 380.0,
+     "allowed": 95.0,
+     "evidence": {
+      "start": 437,
+      "end": 509,
+      "line": 7,
+      "text": "Chest X-ray, 2 views                      71046   $380.00         $95.00"
+     }
+    },
+    {
+     "code": "93005",
+     "description": "ECG tracing",
+     "billed": 210.0,
+     "allowed": 40.0,
+     "evidence": {
+      "start": 510,
+      "end": 582,
+      "line": 8,
+      "text": "ECG tracing                               93005   $210.00         $40.00"
+     }
+    }
+   ],
+   "rejected": [],
+   "status": "complete",
+   "recomputed_total": 551.0,
+   "cross_check": {
+    "result": "match",
+    "stated": {
+     "value": 551.0,
+     "evidence": {
+      "start": 642,
+      "end": 649,
+      "line": 10,
+      "text": "$551.00"
+     }
+    },
+    "recomputed": 551.0
+   },
+   "explanation": "Your ER visit was billed $1,450.00, but the allowed amount is $620.00, so you owe $524.00. The chest X\u2011ray was billed $380.00, allowed $95.00, you owe $19.00. The ECG was billed $210.00, allowed $40.00, you owe $8.00. In total you owe $551.00. Payment plans exist.",
+   "explanation_source": "nemotron",
+   "auditor": {
+    "ok": true,
+    "problems": []
+   },
+   "guardrail_violations": [],
+   "conclusion": "The document's $551.00 matches the recomputed amount.",
+   "calls": [
+    {
+     "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+     "latency_s": 10.355,
+     "prompt_tokens": 414,
+     "completion_tokens": 2004,
+     "cost_usd": 0.0005057999999999999,
+     "finish_reason": "stop"
+    },
+    {
+     "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+     "latency_s": 4.591,
+     "prompt_tokens": 190,
+     "completion_tokens": 959,
+     "cost_usd": 0.00024156,
+     "finish_reason": "stop"
+    },
+    {
+     "model": "nvidia/nemotron-3-super-120b-a12b",
+     "latency_s": 2.086,
+     "prompt_tokens": 313,
+     "completion_tokens": 233,
+     "cost_usd": 0.0003036,
+     "finish_reason": "stop"
+    }
+   ],
+   "latency_s": 17.032,
+   "cost_usd": 0.0010509599999999999,
+   "score": {
+    "status_ok": true,
+    "fields_correct": "5/5",
+    "lines_correct": "3/3",
+    "spans_verified": 8,
+    "unverified_rejected": 0,
+    "cross_ok": true,
+    "total_ok": true
+   }
+  },
+  {
+   "document": "eob_er_complete.txt",
+   "extractor_error": null,
+   "raw_extraction": "{\n  \"deductible_remaining\": {\n    \"value\": 500,\n    \"evidence\": \"$500.00\"\n  },\n  \"coinsurance\": {\n    \"value\": 0.2,\n    \"evidence\": \"20%\"\n  },\n  \"copay\": {\n    \"value\": 0,\n    \"evidence\": \"$0.00\"\n  },\n  \"oop_remaining\": {\n    \"value\": 3000,\n    \"evidence\": \"$3,000.00\"\n  },\n  \"stated_patient_responsibility\": {\n    \"value\": 551,\n    \"evidence\": \"$551.00\"\n  },\n  \"lines\": [\n    {\n      \"code\": \"99284\",\n      \"description\": \"Emergency room visit (moderate)\",\n      \"billed\": 1450,\n      \"allowed\": 620,\n      \"evidence\": \"Emergency room visit (moderate)           99284   $1,450.00       $620.00\"\n    },\n    {\n      \"code\": \"71046\",\n      \"description\": \"Chest X-ray, 2 views\",\n      \"billed\": 380,\n      \"allowed\": 95,\n      \"evidence\": \"Chest X-ray, 2 views                      71046   $380.00         $95.00\"\n    },\n    {\n      \"code\": \"93005\",\n      \"description\": \"ECG tracing\",\n      \"billed\": 210,\n      \"allowed\": 40,\n      \"evidence\": \"ECG tracing                               93005   $210.00         $40.00\"\n    }\n  ]\n}",
+   "extracted_fields": {
+    "deductible_remaining": {
+     "value": 500,
+     "evidence": {
+      "start": 181,
+      "end": 188,
+      "line": 3,
+      "text": "$500.00"
+     }
+    },
+    "coinsurance": {
+     "value": 0.2,
+     "evidence": {
+      "start": 220,
+      "end": 223,
+      "line": 3,
+      "text": "20%"
+     }
+    },
+    "copay": {
+     "value": 0,
+     "evidence": {
+      "start": 232,
+      "end": 237,
+      "line": 3,
+      "text": "$0.00"
+     }
+    },
+    "oop_remaining": {
+     "value": 3000,
+     "evidence": {
+      "start": 272,
+      "end": 281,
+      "line": 3,
+      "text": "$3,000.00"
+     }
+    },
+    "stated_patient_responsibility": {
+     "value": 551,
+     "evidence": {
+      "start": 642,
+      "end": 649,
+      "line": 10,
+      "text": "$551.00"
+     }
+    }
+   },
+   "extracted_lines": [
+    {
+     "code": "99284",
+     "description": "Emergency room visit (moderate)",
+     "billed": 1450,
+     "allowed": 620,
+     "evidence": {
+      "start": 363,
+      "end": 436,
+      "line": 6,
+      "text": "Emergency room visit (moderate)           99284   $1,450.00       $620.00"
+     }
+    },
+    {
+     "code": "71046",
+     "description": "Chest X-ray, 2 views",
+     "billed": 380,
+     "allowed": 95,
+     "evidence": {
+      "start": 437,
+      "end": 509,
+      "line": 7,
+      "text": "Chest X-ray, 2 views                      71046   $380.00         $95.00"
+     }
+    },
+    {
+     "code": "93005",
+     "description": "ECG tracing",
+     "billed": 210,
+     "allowed": 40,
+     "evidence": {
+      "start": 510,
+      "end": 582,
+      "line": 8,
+      "text": "ECG tracing                               93005   $210.00         $40.00"
+     }
+    }
+   ],
+   "rejected": [],
+   "status": "complete",
+   "recomputed_total": 551.0,
+   "cross_check": {
+    "result": "match",
+    "stated": {
+     "value": 551,
+     "evidence": {
+      "start": 642,
+      "end": 649,
+      "line": 10,
+      "text": "$551.00"
+     }
+    },
+    "recomputed": 551.0
+   },
+   "explanation": "Your ER visit was billed $1,450.00, but the allowed amount is $620.00, so you owe $524.00. The chest X\u2011ray billed $380.00, allowed $95.00, you owe $19.00. The ECG billed $210.00, allowed $40.00, you owe $8.00. In total you owe $551.00. Payment plans exist.",
+   "explanation_source": "nemotron",
+   "auditor": {
+    "ok": true,
+    "problems": []
+   },
+   "guardrail_violations": [],
+   "conclusion": "The document's $551.00 matches the recomputed amount.",
+   "calls": [
+    {
+     "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+     "latency_s": 8.754,
+     "prompt_tokens": 414,
+     "completion_tokens": 2522,
+     "cost_usd": 0.00063012,
+     "finish_reason": "stop"
+    },
+    {
+     "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+     "latency_s": 3.962,
+     "prompt_tokens": 190,
+     "completion_tokens": 1053,
+     "cost_usd": 0.00026412,
+     "finish_reason": "stop"
+    },
+    {
+     "model": "nvidia/nemotron-3-super-120b-a12b",
+     "latency_s": 3.284,
+     "prompt_tokens": 311,
+     "completion_tokens": 381,
+     "cost_usd": 0.00043620000000000003,
+     "finish_reason": "stop"
+    }
+   ],
+   "latency_s": 16.001,
+   "cost_usd": 0.00133044,
+   "score": {
+    "status_ok": true,
+    "fields_correct": "5/5",
+    "lines_correct": "3/3",
+    "spans_verified": 8,
+    "unverified_rejected": 0,
+    "cross_ok": true,
+    "total_ok": true
+   }
+  },
+  {
+   "document": "eob_er_mismatch.txt",
+   "extractor_error": null,
+   "raw_extraction": "{\n  \"deductible_remaining\": {\n    \"value\": 500.00,\n    \"evidence\": \"$500.00\"\n  },\n  \"coinsurance\": {\n    \"value\": 0.2,\n    \"evidence\": \"20%\"\n  },\n  \"copay\": {\n    \"value\": 0.0,\n    \"evidence\": \"$0.00\"\n  },\n  \"oop_remaining\": {\n    \"value\": 3000.00,\n    \"evidence\": \"$3,000.00\"\n  },\n  \"stated_patient_responsibility\": {\n    \"value\": 601.00,\n    \"evidence\": \"$601.00\"\n  },\n  \"lines\": [\n    {\n      \"code\": \"99284\",\n      \"description\": \"Emergency room visit (moderate)\",\n      \"billed\": 1450.00,\n      \"allowed\": 620.00,\n      \"evidence\": \"Emergency room visit (moderate)           99284   $1,450.00       $620.00\"\n    },\n    {\n      \"code\": \"71046\",\n      \"description\": \"Chest X-ray, 2 views\",\n      \"billed\": 380.00,\n      \"allowed\": 95.00,\n      \"evidence\": \"Chest X-ray, 2 views                      71046   $380.00         $95.00\"\n    },\n    {\n      \"code\": \"93005\",\n      \"description\": \"ECG tracing\",\n      \"billed\": 210.00,\n      \"allowed\": 40.00,\n      \"evidence\": \"ECG tracing                               93005   $210.00         $40.00\"\n    }\n  ]\n}",
+   "extracted_fields": {
+    "deductible_remaining": {
+     "value": 500.0,
+     "evidence": {
+      "start": 181,
+      "end": 188,
+      "line": 3,
+      "text": "$500.00"
+     }
+    },
+    "coinsurance": {
+     "value": 0.2,
+     "evidence": {
+      "start": 220,
+      "end": 223,
+      "line": 3,
+      "text": "20%"
+     }
+    },
+    "copay": {
+     "value": 0.0,
+     "evidence": {
+      "start": 232,
+      "end": 237,
+      "line": 3,
+      "text": "$0.00"
+     }
+    },
+    "oop_remaining": {
+     "value": 3000.0,
+     "evidence": {
+      "start": 272,
+      "end": 281,
+      "line": 3,
+      "text": "$3,000.00"
+     }
+    },
+    "stated_patient_responsibility": {
+     "value": 601.0,
+     "evidence": {
+      "start": 642,
+      "end": 649,
+      "line": 10,
+      "text": "$601.00"
+     }
+    }
+   },
+   "extracted_lines": [
+    {
+     "code": "99284",
+     "description": "Emergency room visit (moderate)",
+     "billed": 1450.0,
+     "allowed": 620.0,
+     "evidence": {
+      "start": 363,
+      "end": 436,
+      "line": 6,
+      "text": "Emergency room visit (moderate)           99284   $1,450.00       $620.00"
+     }
+    },
+    {
+     "code": "71046",
+     "description": "Chest X-ray, 2 views",
+     "billed": 380.0,
+     "allowed": 95.0,
+     "evidence": {
+      "start": 437,
+      "end": 509,
+      "line": 7,
+      "text": "Chest X-ray, 2 views                      71046   $380.00         $95.00"
+     }
+    },
+    {
+     "code": "93005",
+     "description": "ECG tracing",
+     "billed": 210.0,
+     "allowed": 40.0,
+     "evidence": {
+      "start": 510,
+      "end": 582,
+      "line": 8,
+      "text": "ECG tracing                               93005   $210.00         $40.00"
+     }
+    }
+   ],
+   "rejected": [],
+   "status": "complete",
+   "recomputed_total": 551.0,
+   "cross_check": {
+    "result": "mismatch",
+    "stated": {
+     "value": 601.0,
+     "evidence": {
+      "start": 642,
+      "end": 649,
+      "line": 10,
+      "text": "$601.00"
+     }
+    },
+    "recomputed": 551.0,
+    "difference": 50.0
+   },
+   "explanation": "You were billed $1,450.00 for the emergency room visit, but the allowed amount is $620.00, so you owe $524.00. The chest X\u2011ray billed $380.00, allowed $95.00, you owe $19.00. The ECG tracing billed $210.00, allowed $40.00, you owe $8.00. Your total patient responsibility is $551.00. Payment plans exist.",
+   "explanation_source": "nemotron",
+   "auditor": {
+    "ok": true,
+    "problems": []
+   },
+   "guardrail_violations": [],
+   "conclusion": "The document states $601.00 (line 10) but the plan terms and lines in the same document give $551.00. Ask the insurer to explain the $50.00 difference.",
+   "calls": [
+    {
+     "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+     "latency_s": 7.469,
+     "prompt_tokens": 414,
+     "completion_tokens": 2144,
+     "cost_usd": 0.0005394,
+     "finish_reason": "stop"
+    },
+    {
+     "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+     "latency_s": 3.665,
+     "prompt_tokens": 190,
+     "completion_tokens": 1027,
+     "cost_usd": 0.00025788,
+     "finish_reason": "stop"
+    },
+    {
+     "model": "nvidia/nemotron-3-super-120b-a12b",
+     "latency_s": 1.852,
+     "prompt_tokens": 316,
+     "completion_tokens": 216,
+     "cost_usd": 0.0002892,
+     "finish_reason": "stop"
+    }
+   ],
+   "latency_s": 12.987,
+   "cost_usd": 0.00108648,
+   "score": {
+    "status_ok": true,
+    "fields_correct": "5/5",
+    "lines_correct": "3/3",
+    "spans_verified": 8,
+    "unverified_rejected": 0,
+    "cross_ok": true,
+    "total_ok": true
+   }
+  },
+  {
+   "document": "eob_er_mismatch.txt",
+   "extractor_error": null,
+   "raw_extraction": "{\n  \"deductible_remaining\": {\n    \"value\": 500.00,\n    \"evidence\": \"deductible remaining before this claim: $500.00.\"\n  },\n  \"coinsurance\": {\n    \"value\": 0.2,\n    \"evidence\": \"20%\"\n  },\n  \"copay\": {\n    \"value\": 0.0,\n    \"evidence\": \"$0.00\"\n  },\n  \"oop_remaining\": {\n    \"value\": 3000.0,\n    \"evidence\": \"$3,000.00\"\n  },\n  \"stated_patient_responsibility\": {\n    \"value\": 601.0,\n    \"evidence\": \"$601.00\"\n  },\n  \"lines\": [\n    {\n      \"code\": \"99284\",\n      \"description\": \"Emergency room visit (moderate)\",\n      \"billed\": 1450.0,\n      \"allowed\": 620.0,\n      \"evidence\": \"Emergency room visit (moderate)           99284   $1,450.00       $620.00\"\n    },\n    {\n      \"code\": \"71046\",\n      \"description\": \"Chest X-ray, 2 views\",\n      \"billed\": 380.0,\n      \"allowed\": 95.0,\n      \"evidence\": \"Chest X-ray, 2 views                      71046   $380.00         $95.00\"\n    },\n    {\n      \"code\": \"93005\",\n      \"description\": \"ECG tracing\",\n      \"billed\": 210.0,\n      \"allowed\": 40.0,\n      \"evidence\": \"ECG tracing                               93005   $210.00         $40.00\"\n    }\n  ]\n}",
+   "extracted_fields": {
+    "deductible_remaining": {
+     "value": 500.0,
+     "evidence": {
+      "start": 141,
+      "end": 189,
+      "line": 3,
+      "text": "deductible remaining before this claim: $500.00."
+     }
+    },
+    "coinsurance": {
+     "value": 0.2,
+     "evidence": {
+      "start": 220,
+      "end": 223,
+      "line": 3,
+      "text": "20%"
+     }
+    },
+    "copay": {
+     "value": 0.0,
+     "evidence": {
+      "start": 232,
+      "end": 237,
+      "line": 3,
+      "text": "$0.00"
+     }
+    },
+    "oop_remaining": {
+     "value": 3000.0,
+     "evidence": {
+      "start": 272,
+      "end": 281,
+      "line": 3,
+      "text": "$3,000.00"
+     }
+    },
+    "stated_patient_responsibility": {
+     "value": 601.0,
+     "evidence": {
+      "start": 642,
+      "end": 649,
+      "line": 10,
+      "text": "$601.00"
+     }
+    }
+   },
+   "extracted_lines": [
+    {
+     "code": "99284",
+     "description": "Emergency room visit (moderate)",
+     "billed": 1450.0,
+     "allowed": 620.0,
+     "evidence": {
+      "start": 363,
+      "end": 436,
+      "line": 6,
+      "text": "Emergency room visit (moderate)           99284   $1,450.00       $620.00"
+     }
+    },
+    {
+     "code": "71046",
+     "description": "Chest X-ray, 2 views",
+     "billed": 380.0,
+     "allowed": 95.0,
+     "evidence": {
+      "start": 437,
+      "end": 509,
+      "line": 7,
+      "text": "Chest X-ray, 2 views                      71046   $380.00         $95.00"
+     }
+    },
+    {
+     "code": "93005",
+     "description": "ECG tracing",
+     "billed": 210.0,
+     "allowed": 40.0,
+     "evidence": {
+      "start": 510,
+      "end": 582,
+      "line": 8,
+      "text": "ECG tracing                               93005   $210.00         $40.00"
+     }
+    }
+   ],
+   "rejected": [],
+   "status": "complete",
+   "recomputed_total": 551.0,
+   "cross_check": {
+    "result": "mismatch",
+    "stated": {
+     "value": 601.0,
+     "evidence": {
+      "start": 642,
+      "end": 649,
+      "line": 10,
+      "text": "$601.00"
+     }
+    },
+    "recomputed": 551.0,
+    "difference": 50.0
+   },
+   "explanation": "Your ER visit was billed $1,450.00, allowed $620.00, and you owe $524.00. The chest X\u2011ray was billed $380.00, allowed $95.00, and you owe $19.00. The ECG was billed $210.00, allowed $40.00, and you owe $8.00. Your total owed is $551.00. Payment plans are available.",
+   "explanation_source": "nemotron",
+   "auditor": {
+    "ok": true,
+    "problems": []
+   },
+   "guardrail_violations": [],
+   "conclusion": "The document states $601.00 (line 10) but the plan terms and lines in the same document give $551.00. Ask the insurer to explain the $50.00 difference.",
+   "calls": [
+    {
+     "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+     "latency_s": 16.243,
+     "prompt_tokens": 414,
+     "completion_tokens": 2938,
+     "cost_usd": 0.00072996,
+     "finish_reason": "stop"
+    },
+    {
+     "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+     "latency_s": 4.872,
+     "prompt_tokens": 190,
+     "completion_tokens": 729,
+     "cost_usd": 0.00018636,
+     "finish_reason": "stop"
+    },
+    {
+     "model": "nvidia/nemotron-3-super-120b-a12b",
+     "latency_s": 1.769,
+     "prompt_tokens": 312,
+     "completion_tokens": 187,
+     "cost_usd": 0.00026189999999999997,
+     "finish_reason": "stop"
+    }
+   ],
+   "latency_s": 22.885,
+   "cost_usd": 0.00117822,
+   "score": {
+    "status_ok": true,
+    "fields_correct": "5/5",
+    "lines_correct": "3/3",
+    "spans_verified": 8,
+    "unverified_rejected": 0,
+    "cross_ok": true,
+    "total_ok": true
+   }
+  },
+  {
+   "document": "eob_er_mismatch.txt",
+   "extractor_error": null,
+   "raw_extraction": "{\n  \"deductible_remaining\": {\n    \"value\": 500.0,\n    \"evidence\": \"$500.00\"\n  },\n  \"coinsurance\": {\n    \"value\": 0.2,\n    \"evidence\": \"20%\"\n  },\n  \"copay\": {\n    \"value\": 0.0,\n    \"evidence\": \"$0.00\"\n  },\n  \"oop_remaining\": {\n    \"value\": 3000.0,\n    \"evidence\": \"$3,000.00\"\n  },\n  \"stated_patient_responsibility\": {\n    \"value\": 601.0,\n    \"evidence\": \"$601.00\"\n  },\n  \"lines\": [\n    {\n      \"code\": \"99284\",\n      \"description\": \"Emergency room visit (moderate)\",\n      \"billed\": 1450.0,\n      \"allowed\": 620.0,\n      \"evidence\": \"Emergency room visit (moderate)           99284   $1,450.00       $620.00\"\n    },\n    {\n      \"code\": \"71046\",\n      \"description\": \"Chest X-ray, 2 views\",\n      \"billed\": 380.0,\n      \"allowed\": 95.0,\n      \"evidence\": \"Chest X-ray, 2 views                      71046   $380.00         $95.00\"\n    },\n    {\n      \"code\": \"93005\",\n      \"description\": \"ECG tracing\",\n      \"billed\": 210.0,\n      \"allowed\": 40.0,\n      \"evidence\": \"ECG tracing                               93005   $210.00         $40.00\"\n    }\n  ]\n}",
+   "extracted_fields": {
+    "deductible_remaining": {
+     "value": 500.0,
+     "evidence": {
+      "start": 181,
+      "end": 188,
+      "line": 3,
+      "text": "$500.00"
+     }
+    },
+    "coinsurance": {
+     "value": 0.2,
+     "evidence": {
+      "start": 220,
+      "end": 223,
+      "line": 3,
+      "text": "20%"
+     }
+    },
+    "copay": {
+     "value": 0.0,
+     "evidence": {
+      "start": 232,
+      "end": 237,
+      "line": 3,
+      "text": "$0.00"
+     }
+    },
+    "oop_remaining": {
+     "value": 3000.0,
+     "evidence": {
+      "start": 272,
+      "end": 281,
+      "line": 3,
+      "text": "$3,000.00"
+     }
+    },
+    "stated_patient_responsibility": {
+     "value": 601.0,
+     "evidence": {
+      "start": 642,
+      "end": 649,
+      "line": 10,
+      "text": "$601.00"
+     }
+    }
+   },
+   "extracted_lines": [
+    {
+     "code": "99284",
+     "description": "Emergency room visit (moderate)",
+     "billed": 1450.0,
+     "allowed": 620.0,
+     "evidence": {
+      "start": 363,
+      "end": 436,
+      "line": 6,
+      "text": "Emergency room visit (moderate)           99284   $1,450.00       $620.00"
+     }
+    },
+    {
+     "code": "71046",
+     "description": "Chest X-ray, 2 views",
+     "billed": 380.0,
+     "allowed": 95.0,
+     "evidence": {
+      "start": 437,
+      "end": 509,
+      "line": 7,
+      "text": "Chest X-ray, 2 views                      71046   $380.00         $95.00"
+     }
+    },
+    {
+     "code": "93005",
+     "description": "ECG tracing",
+     "billed": 210.0,
+     "allowed": 40.0,
+     "evidence": {
+      "start": 510,
+      "end": 582,
+      "line": 8,
+      "text": "ECG tracing                               93005   $210.00         $40.00"
+     }
+    }
+   ],
+   "rejected": [],
+   "status": "complete",
+   "recomputed_total": 551.0,
+   "cross_check": {
+    "result": "mismatch",
+    "stated": {
+     "value": 601.0,
+     "evidence": {
+      "start": 642,
+      "end": 649,
+      "line": 10,
+      "text": "$601.00"
+     }
+    },
+    "recomputed": 551.0,
+    "difference": 50.0
+   },
+   "explanation": "Your ER visit was billed $1,450.00, the allowed amount is $620.00, so you owe $524.00. The chest X\u2011ray was billed $380.00, allowed $95.00, you owe $19.00. The ECG was billed $210.00, allowed $40.00, you owe $8.00. Your total patient responsibility is $551.00. Payment plans are available.",
+   "explanation_source": "nemotron",
+   "auditor": {
+    "ok": true,
+    "problems": []
+   },
+   "guardrail_violations": [],
+   "conclusion": "The document states $601.00 (line 10) but the plan terms and lines in the same document give $551.00. Ask the insurer to explain the $50.00 difference.",
+   "calls": [
+    {
+     "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+     "latency_s": 11.226,
+     "prompt_tokens": 414,
+     "completion_tokens": 1784,
+     "cost_usd": 0.00045299999999999995,
+     "finish_reason": "stop"
+    },
+    {
+     "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+     "latency_s": 6.16,
+     "prompt_tokens": 190,
+     "completion_tokens": 962,
+     "cost_usd": 0.00024228,
+     "finish_reason": "stop"
+    },
+    {
+     "model": "nvidia/nemotron-3-super-120b-a12b",
+     "latency_s": 2.335,
+     "prompt_tokens": 314,
+     "completion_tokens": 188,
+     "cost_usd": 0.00026340000000000006,
+     "finish_reason": "stop"
+    }
+   ],
+   "latency_s": 19.721,
+   "cost_usd": 0.00095868,
+   "score": {
+    "status_ok": true,
+    "fields_correct": "5/5",
+    "lines_correct": "3/3",
+    "spans_verified": 8,
+    "unverified_rejected": 0,
+    "cross_ok": true,
+    "total_ok": true
+   }
+  },
+  {
+   "document": "eob_primary_missing.txt",
+   "extractor_error": null,
+   "raw_extraction": "{\n  \"deductible_remaining\": {\n    \"value\": 0,\n    \"evidence\": \"Deductible remaining: $0.00.\"\n  },\n  \"coinsurance\": {\n    \"value\": null,\n    \"evidence\": null\n  },\n  \"copay\": {\n    \"value\": 30,\n    \"evidence\": \"Copay per visit: $30.00.\"\n  },\n  \"oop_remaining\": {\n    \"value\": null,\n    \"evidence\": null\n  },\n  \"stated_patient_responsibility\": {\n    \"value\": null,\n    \"evidence\": null\n  },\n  \"lines\": [\n    {\n      \"code\": \"99213\",\n      \"description\": \"Office visit, established patient\",\n      \"billed\": 220,\n      \"allowed\": 110,\n      \"evidence\": \"Office visit, established patient         99213   $220.00         $110.00\"\n    },\n    {\n      \"code\": \"80053\",\n      \"description\": \"Comprehensive metabolic panel\",\n      \"billed\": 150,\n      \"allowed\": 18.5,\n      \"evidence\": \"Comprehensive metabolic panel             80053   $150.00         $18.50\"\n    }\n  ]\n}",
+   "extracted_fields": {
+    "deductible_remaining": {
+     "value": 0,
+     "evidence": {
+      "start": 145,
+      "end": 173,
+      "line": 3,
+      "text": "Deductible remaining: $0.00."
+     }
+    },
+    "copay": {
+     "value": 30,
+     "evidence": {
+      "start": 120,
+      "end": 144,
+      "line": 3,
+      "text": "Copay per visit: $30.00."
+     }
+    }
+   },
+   "extracted_lines": [
+    {
+     "code": "99213",
+     "description": "Office visit, established patient",
+     "billed": 220,
+     "allowed": 110,
+     "evidence": {
+      "start": 254,
+      "end": 327,
+      "line": 6,
+      "text": "Office visit, established patient         99213   $220.00         $110.00"
+     }
+    },
+    {
+     "code": "80053",
+     "description": "Comprehensive metabolic panel",
+     "billed": 150,
+     "allowed": 18.5,
+     "evidence": {
+      "start": 328,
+      "end": 400,
+      "line": 7,
+      "text": "Comprehensive metabolic panel             80053   $150.00         $18.50"
+     }
+    }
+   ],
+   "rejected": [
+    {
+     "field": "stated_patient_responsibility",
+     "why": "not stated in the document"
+    }
+   ],
+   "status": "incomplete",
+   "conclusion": "Cannot compute what you owe from this document. Missing: coinsurance, oop_remaining.",
+   "missing": [
+    {
+     "field": "coinsurance",
+     "why": "not stated in the document"
+    },
+    {
+     "field": "oop_remaining",
+     "why": "not stated in the document"
+    }
+   ],
+   "calls": [
+    {
+     "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+     "latency_s": 8.341,
+     "prompt_tokens": 333,
+     "completion_tokens": 1478,
+     "cost_usd": 0.0003747,
+     "finish_reason": "stop"
+    }
+   ],
+   "latency_s": 8.341,
+   "cost_usd": 0.0003747,
+   "score": {
+    "status_ok": true,
+    "fields_correct": "2/2",
+    "lines_correct": "2/2",
+    "spans_verified": 4,
+    "unverified_rejected": 0,
+    "missing_ok": true
+   }
+  },
+  {
+   "document": "eob_primary_missing.txt",
+   "extractor_error": null,
+   "raw_extraction": "{\n  \"deductible_remaining\": {\n    \"value\": 0.00,\n    \"evidence\": \"Deductible remaining: $0.00.\"\n  },\n  \"coinsurance\": {\n    \"value\": null,\n    \"evidence\": null\n  },\n  \"copay\": {\n    \"value\": 30.00,\n    \"evidence\": \"Copay per visit: $30.00.\"\n  },\n  \"oop_remaining\": {\n    \"value\": null,\n    \"evidence\": null\n  },\n  \"stated_patient_responsibility\": {\n    \"value\": null,\n    \"evidence\": null\n  },\n  \"lines\": [\n    {\n      \"code\": \"99213\",\n      \"description\": \"Office visit, established patient\",\n      \"billed\": 220.00,\n      \"allowed\": 110.00,\n      \"evidence\": \"Office visit, established patient         99213   $220.00         $110.00\"\n    },\n    {\n      \"code\": \"80053\",\n      \"description\": \"Comprehensive metabolic panel\",\n      \"billed\": 150.00,\n      \"allowed\": 18.50,\n      \"evidence\": \"Comprehensive metabolic panel             80053   $150.00         $18.50\"\n    }\n  ]\n}",
+   "extracted_fields": {
+    "deductible_remaining": {
+     "value": 0.0,
+     "evidence": {
+      "start": 145,
+      "end": 173,
+      "line": 3,
+      "text": "Deductible remaining: $0.00."
+     }
+    },
+    "copay": {
+     "value": 30.0,
+     "evidence": {
+      "start": 120,
+      "end": 144,
+      "line": 3,
+      "text": "Copay per visit: $30.00."
+     }
+    }
+   },
+   "extracted_lines": [
+    {
+     "code": "99213",
+     "description": "Office visit, established patient",
+     "billed": 220.0,
+     "allowed": 110.0,
+     "evidence": {
+      "start": 254,
+      "end": 327,
+      "line": 6,
+      "text": "Office visit, established patient         99213   $220.00         $110.00"
+     }
+    },
+    {
+     "code": "80053",
+     "description": "Comprehensive metabolic panel",
+     "billed": 150.0,
+     "allowed": 18.5,
+     "evidence": {
+      "start": 328,
+      "end": 400,
+      "line": 7,
+      "text": "Comprehensive metabolic panel             80053   $150.00         $18.50"
+     }
+    }
+   ],
+   "rejected": [
+    {
+     "field": "stated_patient_responsibility",
+     "why": "not stated in the document"
+    }
+   ],
+   "status": "incomplete",
+   "conclusion": "Cannot compute what you owe from this document. Missing: coinsurance, oop_remaining.",
+   "missing": [
+    {
+     "field": "coinsurance",
+     "why": "not stated in the document"
+    },
+    {
+     "field": "oop_remaining",
+     "why": "not stated in the document"
+    }
+   ],
+   "calls": [
+    {
+     "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+     "latency_s": 8.32,
+     "prompt_tokens": 333,
+     "completion_tokens": 1481,
+     "cost_usd": 0.00037542,
+     "finish_reason": "stop"
+    }
+   ],
+   "latency_s": 8.32,
+   "cost_usd": 0.00037542,
+   "score": {
+    "status_ok": true,
+    "fields_correct": "2/2",
+    "lines_correct": "2/2",
+    "spans_verified": 4,
+    "unverified_rejected": 0,
+    "missing_ok": true
+   }
+  },
+  {
+   "document": "eob_primary_missing.txt",
+   "extractor_error": null,
+   "raw_extraction": "{\n  \"deductible_remaining\": {\n    \"value\": 0.00,\n    \"evidence\": \"Deductible remaining: $0.00.\"\n  },\n  \"coinsurance\": {\n    \"value\": null,\n    \"evidence\": null\n  },\n  \"copay\": {\n    \"value\": 30.00,\n    \"evidence\": \"Copay per visit: $30.00.\"\n  },\n  \"oop_remaining\": {\n    \"value\": null,\n    \"evidence\": null\n  },\n  \"stated_patient_responsibility\": {\n    \"value\": null,\n    \"evidence\": null\n  },\n  \"lines\": [\n    {\n      \"code\": \"99213\",\n      \"description\": \"Office visit, established patient\",\n      \"billed\": 220.00,\n      \"allowed\": 110.00,\n      \"evidence\": \"Office visit, established patient         99213   $220.00         $110.00\"\n    },\n    {\n      \"code\": \"80053\",\n      \"description\": \"Comprehensive metabolic panel\",\n      \"billed\": 150.00,\n      \"allowed\": 18.50,\n      \"evidence\": \"Comprehensive metabolic panel             80053   $150.00         $18.50\"\n    }\n  ]\n}",
+   "extracted_fields": {
+    "deductible_remaining": {
+     "value": 0.0,
+     "evidence": {
+      "start": 145,
+      "end": 173,
+      "line": 3,
+      "text": "Deductible remaining: $0.00."
+     }
+    },
+    "copay": {
+     "value": 30.0,
+     "evidence": {
+      "start": 120,
+      "end": 144,
+      "line": 3,
+      "text": "Copay per visit: $30.00."
+     }
+    }
+   },
+   "extracted_lines": [
+    {
+     "code": "99213",
+     "description": "Office visit, established patient",
+     "billed": 220.0,
+     "allowed": 110.0,
+     "evidence": {
+      "start": 254,
+      "end": 327,
+      "line": 6,
+      "text": "Office visit, established patient         99213   $220.00         $110.00"
+     }
+    },
+    {
+     "code": "80053",
+     "description": "Comprehensive metabolic panel",
+     "billed": 150.0,
+     "allowed": 18.5,
+     "evidence": {
+      "start": 328,
+      "end": 400,
+      "line": 7,
+      "text": "Comprehensive metabolic panel             80053   $150.00         $18.50"
+     }
+    }
+   ],
+   "rejected": [
+    {
+     "field": "stated_patient_responsibility",
+     "why": "not stated in the document"
+    }
+   ],
+   "status": "incomplete",
+   "conclusion": "Cannot compute what you owe from this document. Missing: coinsurance, oop_remaining.",
+   "missing": [
+    {
+     "field": "coinsurance",
+     "why": "not stated in the document"
+    },
+    {
+     "field": "oop_remaining",
+     "why": "not stated in the document"
+    }
+   ],
+   "calls": [
+    {
+     "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+     "latency_s": 7.11,
+     "prompt_tokens": 333,
+     "completion_tokens": 1401,
+     "cost_usd": 0.00035622000000000003,
+     "finish_reason": "stop"
+    }
+   ],
+   "latency_s": 7.11,
+   "cost_usd": 0.00035622000000000003,
+   "score": {
+    "status_ok": true,
+    "fields_correct": "2/2",
+    "lines_correct": "2/2",
+    "spans_verified": 4,
+    "unverified_rejected": 0,
+    "missing_ok": true
+   }
+  }
+ ],
+ "total_cost_usd": 0.0078747
+}

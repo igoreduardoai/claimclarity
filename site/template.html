@@ -1,0 +1,66 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ClaimClarity: every conclusion shows where it came from</title>
+<style>
+:root{--bg:#0f1420;--card:#171e2e;--ink:#e8ecf4;--mut:#9aa6bd;--ok:#2fbf71;--bad:#ff5d5d;--warn:#f5b941;--acc:#76b900}
+*{box-sizing:border-box}body{margin:0;font:15px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--ink)}
+header{padding:18px 24px;border-bottom:1px solid #263049}h1{margin:0;font-size:22px}h1 span{color:var(--acc)}
+.sub{color:var(--mut);font-size:14px}.banner{margin-top:8px;display:inline-block;background:#22304d;border:1px solid #3a4c74;padding:4px 10px;border-radius:6px;font-size:13px}
+nav{display:flex;gap:8px;padding:12px 24px;flex-wrap:wrap}nav button{background:var(--card);color:var(--ink);border:1px solid #2c3754;padding:8px 14px;border-radius:8px;cursor:pointer;font-size:14px}
+nav button.on{border-color:var(--acc);box-shadow:0 0 0 1px var(--acc) inset}
+main{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:16px;padding:0 24px 24px}@media(max-width:900px){main{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid #263049;border-radius:10px;padding:14px 16px}.card h2{margin:0 0 8px;font-size:15px;color:var(--mut);font-weight:600;text-transform:uppercase;letter-spacing:.04em}
+pre{margin:0;white-space:pre-wrap;overflow:auto;font:13px/1.65 ui-monospace,Menlo,Consolas,monospace;counter-reset:ln}
+pre .ln{display:block}pre .ln::before{counter-increment:ln;content:counter(ln);display:inline-block;width:2.2em;color:#5a6684;text-align:right;margin-right:12px}
+mark{background:rgba(118,185,0,.22);color:inherit;border-bottom:2px solid var(--acc);border-radius:2px;padding:0 1px}
+mark.bad{background:rgba(255,93,93,.25);border-color:var(--bad)}mark.hot{outline:2px solid #fff}
+.concl{font-size:17px;font-weight:600;padding:12px 14px;border-radius:8px;margin-bottom:12px}
+.concl.match{background:rgba(47,191,113,.15);border:1px solid var(--ok)}.concl.mismatch{background:rgba(255,93,93,.14);border:1px solid var(--bad)}.concl.missing{background:rgba(245,185,65,.14);border:1px solid var(--warn)}
+table{width:100%;border-collapse:collapse;font-size:13.5px}td,th{padding:5px 6px;border-bottom:1px solid #263049;text-align:left;vertical-align:top}th{color:var(--mut);font-weight:500}
+.ev{color:var(--acc);cursor:pointer;white-space:nowrap}.pill{display:inline-block;padding:1px 8px;border-radius:99px;font-size:12px;border:1px solid}
+.pill.ok{color:var(--ok);border-color:var(--ok)}.pill.bad{color:var(--bad);border-color:var(--bad)}.pill.warn{color:var(--warn);border-color:var(--warn)}
+.stack>*+*{margin-top:12px}.mut{color:var(--mut);font-size:13px}.expl{background:#10172a;border-radius:8px;padding:10px 12px;white-space:pre-wrap}
+footer{padding:0 24px 24px;color:var(--mut);font-size:13px}a{color:#8fd14f}
+</style></head><body>
+<header><h1>ClaimClarity <span>· every conclusion shows where it came from</span></h1>
+<div class="sub">Synthetic Explanation of Benefits → NVIDIA Nemotron extracts each field with a verbatim quote → code verifies the quote in the document, recomputes what you owe, and cross-checks the stated amount.</div>
+<div class="banner" id="banner"></div></header>
+<nav id="tabs"></nav>
+<main><section class="card"><h2>Document (synthetic)</h2><pre id="doc"></pre><div class="mut" style="margin-top:8px">Highlighted text = the exact evidence span behind each extracted value. Click a "line N" link to jump to it.</div></section>
+<section class="stack" id="side"></section></main>
+<footer id="foot"></footer>
+<script>
+const D=/*DATA*/null;
+const $=s=>document.querySelector(s), esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const money=v=>'$'+Number(v).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
+const S=D.summary;
+$('#banner').innerHTML=`Recorded run on Nebius Token Factory, 2026-10-24 12:11 CT (${esc(S.run_file)}). This page replays it; no live model calls. Models: nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B (extract, write) · nvidia/nemotron-3-super-120b-a12b (audit).`;
+$('#foot').innerHTML=`All ${S.runs} recorded runs (3 documents × ${S.runs/3}): ${S.ok}/${S.runs} correct outcome · median ${S.median_latency} s per document · mean $${S.mean_cost} per document · $${S.total_cost} total. Synthetic data only. Not medical, legal, or billing advice. ClaimClarity explains and flags; a person decides what to do. · <a href="https://github.com/igoreduardoai/claimclarity">Source (MIT)</a>`;
+D.cases.forEach((c,i)=>{const b=document.createElement('button');b.textContent=c.title;b.onclick=()=>{location.hash=c.key};b.id='t-'+c.key;$('#tabs').appendChild(b)});
+function render(key){
+ const c=D.cases.find(x=>x.key==key)||D.cases[0], r=c.run; document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('on',b.id=='t-'+c.key));
+ const spans=[]; const F=r.extracted_fields||{};
+ for(const [k,f] of Object.entries(F)){spans.push({...f.evidence,id:'f-'+k,bad:(k=='stated_patient_responsibility'&&r.cross_check&&r.cross_check.result=='mismatch')})}
+ (r.extracted_lines||[]).forEach(l=>spans.push({...l.evidence,id:'l-'+l.code}));
+ spans.sort((a,b)=>a.start-b.start); let t=r.doc_text,h='',p=0;
+ for(const s of spans){if(s.start<p)continue;h+=esc(t.slice(p,s.start))+`<mark id="${s.id}" class="${s.bad?'bad':''}">${esc(t.slice(s.start,s.end))}</mark>`;p=s.end}
+ h+=esc(t.slice(p)); $('#doc').innerHTML=h.split('\n').map(x=>`<span class="ln">${x||' '}</span>`).join('');
+ const ev=(id,line)=>`<span class="ev" onclick="hot('${id}')">line ${line}</span>`;
+ const names={deductible_remaining:'Deductible remaining',coinsurance:'Coinsurance',copay:'Copay',oop_remaining:'Out-of-pocket max remaining',stated_patient_responsibility:'Stated patient responsibility'};
+ const fmt=(k,v)=>k=='coinsurance'?Math.round(v*100)+'%':money(v);
+ let side=`<div class="card"><h2>Conclusion</h2><div class="concl ${c.key}">${esc(r.conclusion)}</div>`;
+ if(r.cross_check&&r.cross_check.result=='mismatch'){const cc=r.cross_check;side+=`<table><tr><th>Document states</th><td><b>${money(cc.stated.value)}</b> ${ev('f-stated_patient_responsibility',cc.stated.evidence.line)}</td></tr><tr><th>Recomputed from the same document</th><td><b>${money(cc.recomputed)}</b></td></tr><tr><th>Difference</th><td><span class="pill bad">${money(Math.abs(cc.difference))}</span></td></tr></table>`}
+ if(r.cross_check&&r.cross_check.result=='match'){side+=`<span class="pill ok">stated ${money(r.cross_check.stated.value)} = recomputed ${money(r.cross_check.recomputed)}</span> ${ev('f-stated_patient_responsibility',r.cross_check.stated.evidence.line)}`}
+ if(r.missing){side+=`<table><tr><th>Missing</th><th>Why</th></tr>${r.missing.map(m=>`<tr><td><span class="pill warn">${esc(names[m.field]||m.field)}</span></td><td>${esc(m.why)}</td></tr>`).join('')}</table><div class="mut" style="margin-top:6px">No amount is shown: the system will not guess a missing plan term.</div>`}
+ side+=`</div><div class="card"><h2>Extracted &amp; verified</h2><table><tr><th>Field</th><th>Value</th><th>Evidence</th></tr>`;
+ for(const [k,f] of Object.entries(F))side+=`<tr><td>${names[k]||k}</td><td>${fmt(k,f.value)}</td><td>${ev('f-'+k,f.evidence.line)}</td></tr>`;
+ (r.extracted_lines||[]).forEach(l=>side+=`<tr><td>${esc(l.description)} <span class="mut">${l.code}</span></td><td>billed ${money(l.billed)} · allowed ${money(l.allowed)}</td><td>${ev('l-'+l.code,l.evidence.line)}</td></tr>`);
+ side+=`</table></div>`;
+ if(r.explanation){const a=r.auditor||{};side+=`<div class="card"><h2>Patient explanation</h2><div style="margin-bottom:6px"><span class="pill ${r.explanation_source=='nemotron'?'ok':'warn'}">${r.explanation_source=='nemotron'?'Written by Nemotron Nano, audited by Nemotron Super':'Safe template'}</span> <span class="pill ${a.ok?'ok':'bad'}">auditor ok=${a.ok}</span> <span class="pill ${(r.guardrail_violations||[]).length?'bad':'ok'}">guardrails: ${(r.guardrail_violations||[]).length?esc(r.guardrail_violations.join(', ')):'pass'}</span></div><div class="expl">${esc(r.explanation)}</div></div>`}
+ const calls=r.calls||[]; side+=`<div class="card"><h2>This run: time &amp; cost</h2><table><tr><th>Step</th><th>Model</th><th>Tokens in/out</th><th>Latency</th><th>Cost</th></tr>`;
+ const step=['extract','write','audit']; calls.forEach((k,i)=>side+=`<tr><td>${step[i]||'call'}</td><td class="mut">${esc(k.model.split('/')[1])}</td><td>${k.prompt_tokens} / ${k.completion_tokens}</td><td>${k.latency_s.toFixed(1)} s</td><td>$${k.cost_usd.toFixed(5)}</td></tr>`);
+ side+=`<tr><th colspan=3>Total for this document</th><th>${r.latency_s.toFixed(1)} s</th><th>$${r.cost_usd.toFixed(5)}</th></tr></table><div class="mut">Output tokens include Nemotron reasoning tokens.</div></div>`;
+ $('#side').innerHTML=side;
+}
+function hot(id){document.querySelectorAll('mark.hot').forEach(m=>m.classList.remove('hot'));const m=document.getElementById(id);if(m){m.classList.add('hot');m.scrollIntoView({block:'center',behavior:'smooth'})}}
+window.onhashchange=()=>render(location.hash.slice(1)); render(location.hash.slice(1)||'match');
+</script></body></html>

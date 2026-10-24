@@ -1,0 +1,29 @@
+{
+ "patient_email": "sb-patient@example.com",
+ "plan": {
+  "deductible_remaining": 250.0,
+  "coinsurance": 0.25,
+  "copay": 0.0,
+  "oop_remaining": 3500.0
+ },
+ "lines": [
+  {
+   "code": "97161",
+   "description": "Physical therapy evaluation",
+   "billed": 260.0,
+   "allowed": 105.0
+  },
+  {
+   "code": "97110",
+   "description": "Therapeutic exercise, 2 units",
+   "billed": 180.0,
+   "allowed": 62.0
+  },
+  {
+   "code": "97140",
+   "description": "Manual therapy",
+   "billed": 120.0,
+   "allowed": 31.0
+  }
+ ]
+}

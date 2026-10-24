@@ -1,0 +1,23 @@
+{
+ "patient_email": "sb-patient@example.com",
+ "plan": {
+  "deductible_remaining": 0.0,
+  "coinsurance": 0.0,
+  "copay": 75.0,
+  "oop_remaining": 2000.0
+ },
+ "lines": [
+  {
+   "code": "99214",
+   "description": "Urgent care visit",
+   "billed": 310.0,
+   "allowed": 165.0
+  },
+  {
+   "code": "87880",
+   "description": "Rapid strep test",
+   "billed": 60.0,
+   "allowed": 22.0
+  }
+ ]
+}

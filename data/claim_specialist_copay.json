@@ -1,0 +1,23 @@
+{
+ "patient_email": "sb-patient@example.com",
+ "plan": {
+  "deductible_remaining": 0.0,
+  "coinsurance": 0.0,
+  "copay": 50.0,
+  "oop_remaining": 1800.0
+ },
+ "lines": [
+  {
+   "code": "99204",
+   "description": "New patient specialist visit",
+   "billed": 420.0,
+   "allowed": 210.0
+  },
+  {
+   "code": "93000",
+   "description": "ECG with interpretation",
+   "billed": 110.0,
+   "allowed": 17.0
+  }
+ ]
+}

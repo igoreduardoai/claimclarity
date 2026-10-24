@@ -1,0 +1,6 @@
+{"patient_email": "sb-patient@example.com",
+ "plan": {"deductible_remaining": 0.0, "coinsurance": 0.1, "copay": 30.0, "oop_remaining": 1200.0},
+ "lines": [
+  {"code": "99213", "description": "Office visit, established patient", "billed": 220.0, "allowed": 110.0},
+  {"code": "80053", "description": "Comprehensive metabolic panel", "billed": 150.0, "allowed": 18.5},
+  {"code": "G0444", "description": "Cosmetic consult (not covered)", "billed": 90.0, "allowed": 90.0, "covered": false}]}

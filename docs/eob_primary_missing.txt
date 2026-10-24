@@ -1,0 +1,10 @@
+EXPLANATION OF BENEFITS (SYNTHETIC SAMPLE - NOT A REAL CLAIM)
+Plan: Sample Health HMO          Service date: 10/02/2026
+Copay per visit: $30.00. Deductible remaining: $0.00.
+
+Service                                   Code    Amount billed   Plan allowed
+Office visit, established patient         99213   $220.00         $110.00
+Comprehensive metabolic panel             80053   $150.00         $18.50
+
+Patient responsibility: see your plan documents.
+This is not a bill.

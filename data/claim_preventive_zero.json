@@ -1,0 +1,17 @@
+{
+ "patient_email": "sb-patient@example.com",
+ "plan": {
+  "deductible_remaining": 800.0,
+  "coinsurance": 0.0,
+  "copay": 0.0,
+  "oop_remaining": 3000.0
+ },
+ "lines": [
+  {
+   "code": "99396",
+   "description": "Annual preventive visit",
+   "billed": 280.0,
+   "allowed": 0.0
+  }
+ ]
+}

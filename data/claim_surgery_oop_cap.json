@@ -1,0 +1,23 @@
+{
+ "patient_email": "sb-patient@example.com",
+ "plan": {
+  "deductible_remaining": 200.0,
+  "coinsurance": 0.3,
+  "copay": 0.0,
+  "oop_remaining": 900.0
+ },
+ "lines": [
+  {
+   "code": "29881",
+   "description": "Knee arthroscopy",
+   "billed": 9800.0,
+   "allowed": 4200.0
+  },
+  {
+   "code": "01400",
+   "description": "Anesthesia for knee procedure",
+   "billed": 1600.0,
+   "allowed": 700.0
+  }
+ ]
+}

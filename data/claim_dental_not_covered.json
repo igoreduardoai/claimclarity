@@ -1,0 +1,24 @@
+{
+ "patient_email": "sb-patient@example.com",
+ "plan": {
+  "deductible_remaining": 0.0,
+  "coinsurance": 0.2,
+  "copay": 20.0,
+  "oop_remaining": 1500.0
+ },
+ "lines": [
+  {
+   "code": "99213",
+   "description": "Office visit, established patient",
+   "billed": 200.0,
+   "allowed": 95.0
+  },
+  {
+   "code": "D1110",
+   "description": "Dental cleaning (not covered by medical plan)",
+   "billed": 140.0,
+   "allowed": 140.0,
+   "covered": false
+  }
+ ]
+}

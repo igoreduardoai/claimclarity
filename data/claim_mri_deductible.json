@@ -1,0 +1,17 @@
+{
+ "patient_email": "sb-patient@example.com",
+ "plan": {
+  "deductible_remaining": 1500.0,
+  "coinsurance": 0.2,
+  "copay": 0.0,
+  "oop_remaining": 4000.0
+ },
+ "lines": [
+  {
+   "code": "72148",
+   "description": "MRI lumbar spine without contrast",
+   "billed": 2400.0,
+   "allowed": 980.0
+  }
+ ]
+}
